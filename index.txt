@@ -5,12 +5,15 @@ CMLComp - eMinerals and Materials Grid resources
 :Revision: 1.0
 
 Members of two projects, 
-eMinerals and 
-Materials Grid, 
-both managed by Martin Dove, produced various 
+link:http://www.eminerals.org/[eMinerals] and 
+link:http://www.materialsgrid.org/[Materials Grid], 
+both managed by 
+link:http://web.me.com/dove_family/martin/[Martin Dove],
+produced various 
 tools and specifications that may be of use to 
 people interested in using or further developing 
-the Chemical Markup Language (CML) for atomic 
+the link:http://www.xml-cml.org/[Chemical Markup Language]
+(CML) for atomic 
 scale simulation. These are described below. 
 The outputs have been described in the 
 literature but, since about 2008, have had limited 
@@ -56,7 +59,8 @@ a specialised API for CML output FoX supports generic
 XML processing and these features seem to have become 
 more important to most users. I took over maintenance 
 of FoX from Toby White in August 2008 (version 4.0.3) 
-and host the code and documentation here. Important 
+and host the code and documentation 
+link:http://www1.gly.bris.ac.uk/~walker/FoX/[here]. Important 
 changes include the addition of a module (written by 
 Gen-Tao Chiang) to allow the production of KML, various 
 bug fixes and a handful of new features. FoX is used and 
@@ -90,12 +94,15 @@ contains a several CML dictionaries.
 Golem
 -----
 
-Andrew Walkingshaw wrote Gloem, "a set of tools, and 
+Andrew Walkingshaw wrote 
+link:http://www.lexical.org.uk/golem/[Gloem],
+"a set of tools, and 
 ontology language, for processing data written in the 
 CML. The Golem language is XML, and the tools and 
 libraries are written in Python." This makes use of CML 
 dictionaries to build a system that can be used to 
 construct application-agnostic tools for processing CML 
-documents. The code and documentation is available and 
-contains additional dictionaries. 
+documents. The link:http://code.google.com/p/pygolem/[code] 
+and link:http://www.lexical.org.uk/golem/docs/[documentation]
+is available and contains additional dictionaries. 
 
