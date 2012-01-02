@@ -1,0 +1,101 @@
+CMLComp - eMinerals and Materials Grid resources
+================================================
+:Author: Andrew Walker
+:Email: andrew.walker@bristol.ac.uk
+:Revision: 1.0
+
+Members of two projects, 
+eMinerals and 
+Materials Grid, 
+both managed by Martin Dove, produced various 
+tools and specifications that may be of use to 
+people interested in using or further developing 
+the Chemical Markup Language (CML) for atomic 
+scale simulation. These are described below. 
+The outputs have been described in the 
+literature but, since about 2008, have had limited 
+maintenance and development. Many of the researchers 
+involved have now left academia and some web-based 
+resources no longer exist. I have tried to bring 
+together as many useful resources as possible but 
+in some cases material has been lost. It is worth 
+noting that both projects produced systems and teams 
+that combined distributed grid computing with data 
+capture, storage and analysis, and tools for 
+collaborative science (along with their scientific 
+outcomes). Only tools relevant to CML are listed below.
+
+CMLComp specification and schema
+--------------------------------
+
+Toby White led the specification of a subset of CML 
+for Computational Chemistry that was named CMLComp. 
+The specification consisted of several thousand 
+words of text (hosted on a Trac-based wiki) 
+describing the language, RelaxNG schemata defining 
+the structure of the language and an online document 
+validation service (which made use of Henri Sivonen's 
+link:http://validator.nu[validator.nu]). I have been 
+able to recover most of the specification text from 
+the Internet Archive service and host a version 
+(converted in asciidoc) here. Some pages are missing. 
+I also have the Python script that drives the 
+validation service but this cannot be used because 
+I have been unable to locate copies of the schemata. 
+I've put copies of all documents I have into a git 
+archive hosted on GitHub.
+
+FoX
+---
+
+In order to allow the production of CML from Fortran 
+programs we produced FoX, an XML library written in 
+Fortran 95. CML produced using FoX is conformant with 
+the CMLComp specification discussed above. Along with 
+a specialised API for CML output FoX supports generic 
+XML processing and these features seem to have become 
+more important to most users. I took over maintenance 
+of FoX from Toby White in August 2008 (version 4.0.3) 
+and host the code and documentation here. Important 
+changes include the addition of a module (written by 
+Gen-Tao Chiang) to allow the production of KML, various 
+bug fixes and a handful of new features. FoX is used and 
+shipped with a number of atomic scale simulation codes 
+(e.g. GULP and SIESTA) that can produce CML output. 
+
+CCViz
+-----
+
+Another product from Toby, CCViz allows a CMLComp 
+document to be displayed in a web-browser. A 
+suitable CML document is transformed (using XSLT) to 
+produce a dynamic XHTML document that includes graphs 
+of, for example, convergence during geometry 
+optimization and interactive 3D molecular models 
+displayed using JMol. Ideally, the XSLT processor built 
+into most web-browsers could perform the required 
+transforms when it encounters a CML document (loading 
+the style sheets as needed). However, as of 2008, CCViz 
+needed advanced features not supported by mainstream 
+browsers. In order to overcome this limitation the 
+transforms are bundled with a command line program (also 
+exposed as an online service). The CCViz code is 
+available on GitHub and I’ve set deployed the online 
+service (see this demo). A slightly modified version of 
+the command line version is also distributed with SIESTA 
+(the changes should probably be merged back into the 
+master version of the code). Note that the CCViz source 
+contains a several CML dictionaries.
+
+Golem
+-----
+
+Andrew Walkingshaw wrote Gloem, "a set of tools, and 
+ontology language, for processing data written in the 
+CML. The Golem language is XML, and the tools and 
+libraries are written in Python." This makes use of CML 
+dictionaries to build a system that can be used to 
+construct application-agnostic tools for processing CML 
+documents. The code and documentation is available and 
+contains additional dictionaries. 
+
