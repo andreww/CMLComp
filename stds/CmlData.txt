@@ -1,0 +1,206 @@
+Representing data in CML
+========================
+
+Basic datatypes
+---------------
+
+CMLComp has documented representations for five basic 
+data types, which may be annotated where necessary as 
+shown in the table below.
+
+|==========================
+|integer  | fpx:integer
+|real     | fpx:real
+|complex  | fpx:complex
+|string   | xsd:string
+|boolean  | xsd:boolean
+|==========================
+
+[NOTE]
+============================
+1:: the numerical datatypes are *not* identical 
+to those defined by W3 XML Schema (although 
+quantities marked as such will be accepted by 
+conforming CMLComp applications) 
+(See FloatingPointXml for a rationale)
+2:: If any of these data types are used in a 
+CML document, the corresponding namespace prefixes 
+(fpx or xsd) must be declared.
+============================
+
+Any more specialized data type (for example "chemical 
+element name"; or "positive even integer") should be 
+encoded as one of the above, and validation should 
+be done at the application layer.
+
+Wrapping these data types
+-------------------------
+
+The above four data types can then be wrapped in the 
+following containers:
+
+* `<scalar>` for a single item (even if that item is 
+a complex number).
+* `<array>` for a one-dimensional list of items. 
+* `<matrix>` for a two-dimensional array of items. 
+
+In order to represent higher-dimensional collections 
+of items, see CmlHigherDimensionalArrays?.
+
+In each case, the container should carry
+a dataType attribute indicating the type of data 
+contained therein if the data type is numerical, then 
+there MUST be a units attribute indicating the 
+denomination of the quantity held therein (even 
+when dimensionless). (For further details see CmlUnits?) 
+
+Any more specialized collections of data (for example 
+"Hermitian matrix") should be encoded as one of the 
+above, and further validation must be done at the 
+application layer.
+
+Scalars
+-------
+
+Therefore, a scalar quantity is represented as, 
+for example:
+
+----
+<scalar dataType="fpx:integer" units="siesta:nodes"> 2 </scalar>
+<scalar dataType="fpx:real" units="cml:Angstrom"> 0.98 </scalar>
+<scalar dataType="fpx:complex" 
+   units="cml:dimensionless"> (1.2)+i(4.5) </scalar>
+<scalar dataType="xsd:boolean"> true </scalar>
+----
+
+A string quantity, by contrast, might be:
+
+----
+<scalar dataType="xsd:string"> benzene </scalar>
+----
+
+Note that whitespace handling for scalar strings is under 
+the application's control, not specified by CMLComp. Therefore 
+the contents of the above `<scalar>` tag is " benzene ", 
+including leading and trailing whitespace.
+
+Arrays
+------
+
+Arrays must have their length specified by the size attribute. 
+Note that while it is required of a CMLComp `<array>` that its 
+advertised size is correct, the microformat schema does not 
+currently check for this.
+
+Where the content of an array is numerical data, each item must 
+be separated by whitespace. Where the content is string data, 
+then it is assumed that whitespace is used as the separator. 
+However, an additional separator attribute may be specified 
+if necessary (eg to permit the encoding of strings containing 
+whitespace.
+
+Therefore, an array of numbers might look like
+
+----
+<array size="6" dataType="fpx:integer" 
+  units="siesta:atoms"> 1 2 3 4 5 6 </scalar>
+----
+
+this encodes the array [1, 2, 3, 4, 5, 6]
+
+----
+<array size="4" dataType="fpx:real" 
+   units="siesta:microNewtons"> 1.3 2.54 7.6e3 45 </scalar>
+----
+
+this encodes the array [1.3, 2.54, 7.6e3, 45]
+
+----
+<array size="3" dataType="fpx:complex" 
+    units="cml:dimensionless"> (1.2)+i(3.4) (4.5e2)+i(3.5e-2) 
+    (22)+i(0) </scalar>
+----
+
+this encodes the array [ (1.2+3.4i), (4.5e2+3.5e-2i), 22]
+
+----
+<array size="4" dataType="xsd:boolean"> true false false false </array>
+----
+
+this encodes the array [True, False, False, False]
+
+Arrays of strings
+-----------------
+
+----
+<array size="5" dataType="xsd:string">
+  C Cl H  O  Ge
+</array>
+----
+
+this encodes the array ["C", "Cl", "H", "O", "Ge"] (NB 
+in this case all whitespace is stripped out.)
+
+----
+<array size="3" dataType="xsd:string" 
+   separator=","> Hydrochloric acid, Benzoic acid, 
+   Calcium Hydrochloride </array>
+----
+
+this encodes the array [" Hydrochloric acid", " Benzoic acid", 
+" Calcium Hydrochloride "] (NB in this case, whitespace 
+handling is under the control of the application. Where 
+a separator is specified, CMLComp preserves all whitespace.)
+
+Matrices
+--------
+
+Matrices behave identically with arrays, except instead 
+of a single size attribute, there are two attributes, rows 
+and columns, to specify the dimensions of the matrix. Note 
+that while it is required of a CMLComp `<matrix>` that its 
+advertised size is correct, the microformat schema does 
+not currently check for this.
+
+The data must be stored with the column index varying fastest.
+
+Thus:
+
+----
+<matrix rows="2" columns="2" dataType="fpx:integer" units="cml:dimensionless"> 1 0 0 1 </matrix>
+----
+
+this encodes the matrix [ [1, 0], [0, 1] ]
+
+----
+<matrix rows="2" columns="3" dataType="fpx:real" units="cml:dimensionless"> 1.2 2.34 3.23 8.56 4.32 5.25 </matrix>
+----
+
+this encodes the matrix [ [1.2, 2.34, 3.23], [8.56, 4.32, 5.25] ]
+
+----
+<matrix rows="2" columns="1" dataType="fpx:real" units="cml:dimensionless"> (1.32)+i(4.76) (4.85)+i(2.88) </matrix>
+----
+
+this encodes the matrix [ [1.32+4.76i], [4.85+2.88i] ]
+
+----
+<matrix rows="2" columns="2" dataType="xsd:boolean"> true false false false </matrix>
+----
+
+this encodes the matrix [ [True, False], [False, False] ]
+
+----
+<matrix rows="2" columns="2" dataType="xsd:string"> yes no yes no </matrix>
+----
+
+this encodes the matrix [ ["yes", "no"], ["no", "yes"] ]
+
+----
+<matrix rows="2" columns="2" dataType="xsd:string" separator=","> maybe, perhaps, sometime, somewhere </matrix>
+----
+
+this encodes the matrix [ [" maybe", " perhaps"], [" sometime", 
+" somewhere "] ]. Note again that where the separator 
+is specified, whitespace is preserved. 
+

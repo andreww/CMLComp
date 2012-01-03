@@ -1,0 +1,992 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.5" />
+<title>Representing data in CML</title>
+<style type="text/css">
+/* Shared CSS for AsciiDoc xhtml11 and html5 backends */
+
+/* Default font. */
+body {
+  font-family: Georgia,serif;
+}
+
+/* Title font. */
+h1, h2, h3, h4, h5, h6,
+div.title, caption.title,
+thead, p.table.header,
+#toctitle,
+#author, #revnumber, #revdate, #revremark,
+#footer {
+  font-family: Arial,Helvetica,sans-serif;
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+a:visited {
+  color: fuchsia;
+}
+
+em {
+  font-style: italic;
+  color: navy;
+}
+
+strong {
+  font-weight: bold;
+  color: #083194;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1, h2, h3 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  padding-top: 0.5em;
+}
+h3 {
+  float: left;
+}
+h3 + * {
+  clear: left;
+}
+h5 {
+  font-size: 1.0em;
+}
+
+div.sectionbody {
+  margin-left: 0;
+}
+
+hr {
+  border: 1px solid silver;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
+}
+ul > li     { color: #aaa; }
+ul > li > * { color: black; }
+
+pre {
+  padding: 0;
+  margin: 0;
+}
+
+#author {
+  color: #527bbd;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+#email {
+}
+#revnumber, #revdate, #revremark {
+}
+
+#footer {
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  margin-top: 2.0em;
+  margin-bottom: 2.0em;
+  margin-right: 10%;
+  color: #606060;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  color: #527bbd;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content {
+  background: #ffffee;
+  border: 1px solid #dddddd;
+  border-left: 4px solid #f0f0f0;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  border: 1px solid #dddddd;
+  border-left: 5px solid #f0f0f0;
+  background: #f8f8f8;
+  padding: 0.5em;
+}
+
+div.quoteblock, div.verseblock {
+  padding-left: 1.0em;
+  margin-left: 1.0em;
+  margin-right: 10%;
+  border-left: 5px solid #f0f0f0;
+  color: #777777;
+}
+
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock > pre.content {
+  font-family: inherit;
+  font-size: inherit;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #527bbd;
+  padding-right: 0.5em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 3px solid #dddddd;
+}
+
+div.exampleblock > div.content {
+  border-left: 3px solid #dddddd;
+  padding-left: 0.5em;
+}
+
+div.imageblock div.content { padding-left: 0; }
+span.image img { border-style: none; }
+a.image:visited { color: white; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: normal;
+  color: navy;
+}
+dd > *:first-child {
+  margin-top: 0.1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+tfoot {
+  font-weight: bold;
+}
+td > div.verse {
+  white-space: pre;
+}
+
+div.hdlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+div.hdlist tr {
+  padding-bottom: 15px;
+}
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
+  vertical-align: top;
+  font-style: normal;
+  padding-right: 0.8em;
+  color: navy;
+}
+td.hdlist2 {
+  vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
+}
+
+.footnote, .footnoteref {
+  font-size: 0.8em;
+}
+
+span.footnote, span.footnoteref {
+  vertical-align: super;
+}
+
+#footnotes {
+  margin: 20px 0 20px 0;
+  padding: 7px 0 0 0;
+}
+
+#footnotes div.footnote {
+  margin: 0 0 5px 0;
+}
+
+#footnotes hr {
+  border: none;
+  border-top: 1px solid silver;
+  height: 1px;
+  text-align: left;
+  margin-left: 0;
+  width: 20%;
+  min-width: 100px;
+}
+
+div.colist td {
+  padding-right: 0.5em;
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+div.colist td img {
+  margin-top: 0.3em;
+}
+
+@media print {
+  #footer-badges { display: none; }
+}
+
+#toc {
+  margin-bottom: 2.5em;
+}
+
+#toctitle {
+  color: #527bbd;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+div.toclevel3 {
+  margin-left: 4em;
+  font-size: 0.9em;
+}
+div.toclevel4 {
+  margin-left: 6em;
+  font-size: 0.9em;
+}
+
+span.aqua { color: aqua; }
+span.black { color: black; }
+span.blue { color: blue; }
+span.fuchsia { color: fuchsia; }
+span.gray { color: gray; }
+span.green { color: green; }
+span.lime { color: lime; }
+span.maroon { color: maroon; }
+span.navy { color: navy; }
+span.olive { color: olive; }
+span.purple { color: purple; }
+span.red { color: red; }
+span.silver { color: silver; }
+span.teal { color: teal; }
+span.white { color: white; }
+span.yellow { color: yellow; }
+
+span.aqua-background { background: aqua; }
+span.black-background { background: black; }
+span.blue-background { background: blue; }
+span.fuchsia-background { background: fuchsia; }
+span.gray-background { background: gray; }
+span.green-background { background: green; }
+span.lime-background { background: lime; }
+span.maroon-background { background: maroon; }
+span.navy-background { background: navy; }
+span.olive-background { background: olive; }
+span.purple-background { background: purple; }
+span.red-background { background: red; }
+span.silver-background { background: silver; }
+span.teal-background { background: teal; }
+span.white-background { background: white; }
+span.yellow-background { background: yellow; }
+
+span.big { font-size: 2em; }
+span.small { font-size: 0.6em; }
+
+span.underline { text-decoration: underline; }
+span.overline { text-decoration: overline; }
+span.line-through { text-decoration: line-through; }
+
+
+/*
+ * xhtml11 specific
+ *
+ * */
+
+tt {
+  font-family: monospace;
+  font-size: inherit;
+  color: navy;
+}
+
+div.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead, p.table.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overriden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
+
+
+/*
+ * html5 specific
+ *
+ * */
+
+.monospaced {
+  font-family: monospace;
+  font-size: inherit;
+  color: navy;
+}
+
+table.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+thead, p.tableblock.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.tableblock {
+  margin-top: 0;
+}
+table.tableblock {
+  border-width: 3px;
+  border-spacing: 0px;
+  border-style: solid;
+  border-color: #527bbd;
+  border-collapse: collapse;
+}
+th.tableblock, td.tableblock {
+  border-width: 1px;
+  padding: 4px;
+  border-style: solid;
+  border-color: #527bbd;
+}
+
+table.tableblock.frame-topbot {
+  border-left-style: hidden;
+  border-right-style: hidden;
+}
+table.tableblock.frame-sides {
+  border-top-style: hidden;
+  border-bottom-style: hidden;
+}
+table.tableblock.frame-none {
+  border-style: hidden;
+}
+
+th.tableblock.halign-left, td.tableblock.halign-left {
+  text-align: left;
+}
+th.tableblock.halign-center, td.tableblock.halign-center {
+  text-align: center;
+}
+th.tableblock.halign-right, td.tableblock.halign-right {
+  text-align: right;
+}
+
+th.tableblock.valign-top, td.tableblock.valign-top {
+  vertical-align: top;
+}
+th.tableblock.valign-middle, td.tableblock.valign-middle {
+  vertical-align: middle;
+}
+th.tableblock.valign-bottom, td.tableblock.valign-bottom {
+  vertical-align: bottom;
+}
+</style>
+<script type="text/javascript">
+/*<![CDATA[*/
+var asciidoc = {  // Namespace.
+
+/////////////////////////////////////////////////////////////////////
+// Table Of Contents generator
+/////////////////////////////////////////////////////////////////////
+
+/* Author: Mihai Bazon, September 2002
+ * http://students.infoiasi.ro/~mishoo
+ *
+ * Table Of Content generator
+ * Version: 0.4
+ *
+ * Feel free to use this script under the terms of the GNU General Public
+ * License, as long as you do not remove or alter this notice.
+ */
+
+ /* modified by Troy D. Hanson, September 2006. License: GPL */
+ /* modified by Stuart Rackham, 2006, 2009. License: GPL */
+
+// toclevels = 1..4.
+toc: function (toclevels) {
+
+  function getText(el) {
+    var text = "";
+    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+      if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+        text += i.data;
+      else if (i.firstChild != null)
+        text += getText(i);
+    }
+    return text;
+  }
+
+  function TocEntry(el, text, toclevel) {
+    this.element = el;
+    this.text = text;
+    this.toclevel = toclevel;
+  }
+
+  function tocEntries(el, toclevels) {
+    var result = new Array;
+    var re = new RegExp('[hH]([2-'+(toclevels+1)+'])');
+    // Function that scans the DOM tree for header elements (the DOM2
+    // nodeIterator API would be a better technique but not supported by all
+    // browsers).
+    var iterate = function (el) {
+      for (var i = el.firstChild; i != null; i = i.nextSibling) {
+        if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+          var mo = re.exec(i.tagName);
+          if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
+            result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+          }
+          iterate(i);
+        }
+      }
+    }
+    iterate(el);
+    return result;
+  }
+
+  var toc = document.getElementById("toc");
+  if (!toc) {
+    return;
+  }
+
+  // Delete existing TOC entries in case we're reloading the TOC.
+  var tocEntriesToRemove = [];
+  var i;
+  for (i = 0; i < toc.childNodes.length; i++) {
+    var entry = toc.childNodes[i];
+    if (entry.nodeName == 'DIV'
+     && entry.getAttribute("class")
+     && entry.getAttribute("class").match(/^toclevel/))
+      tocEntriesToRemove.push(entry);
+  }
+  for (i = 0; i < tocEntriesToRemove.length; i++) {
+    toc.removeChild(tocEntriesToRemove[i]);
+  }
+
+  // Rebuild TOC entries.
+  var entries = tocEntries(document.getElementById("content"), toclevels);
+  for (var i = 0; i < entries.length; ++i) {
+    var entry = entries[i];
+    if (entry.element.id == "")
+      entry.element.id = "_toc_" + i;
+    var a = document.createElement("a");
+    a.href = "#" + entry.element.id;
+    a.appendChild(document.createTextNode(entry.text));
+    var div = document.createElement("div");
+    div.appendChild(a);
+    div.className = "toclevel" + entry.toclevel;
+    toc.appendChild(div);
+  }
+  if (entries.length == 0)
+    toc.parentNode.removeChild(toc);
+},
+
+
+/////////////////////////////////////////////////////////////////////
+// Footnotes generator
+/////////////////////////////////////////////////////////////////////
+
+/* Based on footnote generation code from:
+ * http://www.brandspankingnew.net/archive/2005/07/format_footnote.html
+ */
+
+footnotes: function () {
+  // Delete existing footnote entries in case we're reloading the footnodes.
+  var i;
+  var noteholder = document.getElementById("footnotes");
+  if (!noteholder) {
+    return;
+  }
+  var entriesToRemove = [];
+  for (i = 0; i < noteholder.childNodes.length; i++) {
+    var entry = noteholder.childNodes[i];
+    if (entry.nodeName == 'DIV' && entry.getAttribute("class") == "footnote")
+      entriesToRemove.push(entry);
+  }
+  for (i = 0; i < entriesToRemove.length; i++) {
+    noteholder.removeChild(entriesToRemove[i]);
+  }
+
+  // Rebuild footnote entries.
+  var cont = document.getElementById("content");
+  var spans = cont.getElementsByTagName("span");
+  var refs = {};
+  var n = 0;
+  for (i=0; i<spans.length; i++) {
+    if (spans[i].className == "footnote") {
+      n++;
+      var note = spans[i].getAttribute("data-note");
+      if (!note) {
+        // Use [\s\S] in place of . so multi-line matches work.
+        // Because JavaScript has no s (dotall) regex flag.
+        note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
+        spans[i].innerHTML =
+          "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+        spans[i].setAttribute("data-note", note);
+      }
+      noteholder.innerHTML +=
+        "<div class='footnote' id='_footnote_" + n + "'>" +
+        "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
+        n + "</a>. " + note + "</div>";
+      var id =spans[i].getAttribute("id");
+      if (id != null) refs["#"+id] = n;
+    }
+  }
+  if (n == 0)
+    noteholder.parentNode.removeChild(noteholder);
+  else {
+    // Process footnoterefs.
+    for (i=0; i<spans.length; i++) {
+      if (spans[i].className == "footnoteref") {
+        var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
+        href = href.match(/#.*/)[0];  // Because IE return full URL.
+        n = refs[href];
+        spans[i].innerHTML =
+          "[<a href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+      }
+    }
+  }
+},
+
+install: function(toclevels) {
+  var timerId;
+
+  function reinstall() {
+    asciidoc.footnotes();
+    if (toclevels) {
+      asciidoc.toc(toclevels);
+    }
+  }
+
+  function reinstallAndRemoveTimer() {
+    clearInterval(timerId);
+    reinstall();
+  }
+
+  timerId = setInterval(reinstall, 500);
+  if (document.addEventListener)
+    document.addEventListener("DOMContentLoaded", reinstallAndRemoveTimer, false);
+  else
+    window.onload = reinstallAndRemoveTimer;
+}
+
+}
+asciidoc.install();
+/*]]>*/
+</script>
+</head>
+<body class="article">
+<div id="header">
+<h1>Representing data in CML</h1>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">This document has been recovered and
+transcribed from the internet archive. It
+was originally written by Toby White and
+other members of the eMinerals and Materials
+Grid teams. Not all links work and not all
+material has been located but hopefully this
+document will be useful to people intrested in
+CML for computational atomic scale simulation.
+Further material can be found
+<a href="../index.html">here</a>.</td>
+</tr></table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_basic_datatypes">Basic datatypes</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>CMLComp has documented representations for five basic
+data types, which may be annotated where necessary as
+shown in the table below.</p></div>
+<div class="tableblock">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<col width="50%" />
+<col width="50%" />
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table">integer</p></td>
+<td align="left" valign="top"><p class="table">fpx:integer</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">real</p></td>
+<td align="left" valign="top"><p class="table">fpx:real</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">complex</p></td>
+<td align="left" valign="top"><p class="table">fpx:complex</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">string</p></td>
+<td align="left" valign="top"><p class="table">xsd:string</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">boolean</p></td>
+<td align="left" valign="top"><p class="table">xsd:boolean</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="dlist"><dl>
+<dt class="hdlist1">
+1
+</dt>
+<dd>
+<p>
+the numerical datatypes are <strong>not</strong> identical
+to those defined by W3 XML Schema (although
+quantities marked as such will be accepted by
+conforming CMLComp applications)
+(See FloatingPointXml for a rationale)
+</p>
+</dd>
+<dt class="hdlist1">
+2
+</dt>
+<dd>
+<p>
+If any of these data types are used in a
+CML document, the corresponding namespace prefixes
+(fpx or xsd) must be declared.
+</p>
+</dd>
+</dl></div>
+</td>
+</tr></table>
+</div>
+<div class="paragraph"><p>Any more specialized data type (for example "chemical
+element name"; or "positive even integer") should be
+encoded as one of the above, and validation should
+be done at the application layer.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_wrapping_these_data_types">Wrapping these data types</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>The above four data types can then be wrapped in the
+following containers:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+<tt>&lt;scalar&gt;</tt> for a single item (even if that item is
+a complex number).
+</p>
+</li>
+<li>
+<p>
+<tt>&lt;array&gt;</tt> for a one-dimensional list of items.
+</p>
+</li>
+<li>
+<p>
+<tt>&lt;matrix&gt;</tt> for a two-dimensional array of items.
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>In order to represent higher-dimensional collections
+of items, see CmlHigherDimensionalArrays?.</p></div>
+<div class="paragraph"><p>In each case, the container should carry
+a dataType attribute indicating the type of data
+contained therein if the data type is numerical, then
+there MUST be a units attribute indicating the
+denomination of the quantity held therein (even
+when dimensionless). (For further details see CmlUnits?)</p></div>
+<div class="paragraph"><p>Any more specialized collections of data (for example
+"Hermitian matrix") should be encoded as one of the
+above, and further validation must be done at the
+application layer.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_scalars">Scalars</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Therefore, a scalar quantity is represented as,
+for example:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>&lt;scalar dataType="fpx:integer" units="siesta:nodes"&gt; 2 &lt;/scalar&gt;
+&lt;scalar dataType="fpx:real" units="cml:Angstrom"&gt; 0.98 &lt;/scalar&gt;
+&lt;scalar dataType="fpx:complex"
+   units="cml:dimensionless"&gt; (1.2)+i(4.5) &lt;/scalar&gt;
+&lt;scalar dataType="xsd:boolean"&gt; true &lt;/scalar&gt;</tt></pre>
+</div></div>
+<div class="paragraph"><p>A string quantity, by contrast, might be:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>&lt;scalar dataType="xsd:string"&gt; benzene &lt;/scalar&gt;</tt></pre>
+</div></div>
+<div class="paragraph"><p>Note that whitespace handling for scalar strings is under
+the application&#8217;s control, not specified by CMLComp. Therefore
+the contents of the above <tt>&lt;scalar&gt;</tt> tag is " benzene ",
+including leading and trailing whitespace.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_arrays">Arrays</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Arrays must have their length specified by the size attribute.
+Note that while it is required of a CMLComp <tt>&lt;array&gt;</tt> that its
+advertised size is correct, the microformat schema does not
+currently check for this.</p></div>
+<div class="paragraph"><p>Where the content of an array is numerical data, each item must
+be separated by whitespace. Where the content is string data,
+then it is assumed that whitespace is used as the separator.
+However, an additional separator attribute may be specified
+if necessary (eg to permit the encoding of strings containing
+whitespace.</p></div>
+<div class="paragraph"><p>Therefore, an array of numbers might look like</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>&lt;array size="6" dataType="fpx:integer"
+  units="siesta:atoms"&gt; 1 2 3 4 5 6 &lt;/scalar&gt;</tt></pre>
+</div></div>
+<div class="paragraph"><p>this encodes the array [1, 2, 3, 4, 5, 6]</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>&lt;array size="4" dataType="fpx:real"
+   units="siesta:microNewtons"&gt; 1.3 2.54 7.6e3 45 &lt;/scalar&gt;</tt></pre>
+</div></div>
+<div class="paragraph"><p>this encodes the array [1.3, 2.54, 7.6e3, 45]</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>&lt;array size="3" dataType="fpx:complex"
+    units="cml:dimensionless"&gt; (1.2)+i(3.4) (4.5e2)+i(3.5e-2)
+    (22)+i(0) &lt;/scalar&gt;</tt></pre>
+</div></div>
+<div class="paragraph"><p>this encodes the array [ (1.2+3.4i), (4.5e2+3.5e-2i), 22]</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>&lt;array size="4" dataType="xsd:boolean"&gt; true false false false &lt;/array&gt;</tt></pre>
+</div></div>
+<div class="paragraph"><p>this encodes the array [True, False, False, False]</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_arrays_of_strings">Arrays of strings</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre><tt>&lt;array size="5" dataType="xsd:string"&gt;
+  C Cl H  O  Ge
+&lt;/array&gt;</tt></pre>
+</div></div>
+<div class="paragraph"><p>this encodes the array ["C", "Cl", "H", "O", "Ge"] (NB
+in this case all whitespace is stripped out.)</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>&lt;array size="3" dataType="xsd:string"
+   separator=","&gt; Hydrochloric acid, Benzoic acid,
+   Calcium Hydrochloride &lt;/array&gt;</tt></pre>
+</div></div>
+<div class="paragraph"><p>this encodes the array [" Hydrochloric acid", " Benzoic acid",
+" Calcium Hydrochloride "] (NB in this case, whitespace
+handling is under the control of the application. Where
+a separator is specified, CMLComp preserves all whitespace.)</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_matrices">Matrices</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Matrices behave identically with arrays, except instead
+of a single size attribute, there are two attributes, rows
+and columns, to specify the dimensions of the matrix. Note
+that while it is required of a CMLComp <tt>&lt;matrix&gt;</tt> that its
+advertised size is correct, the microformat schema does
+not currently check for this.</p></div>
+<div class="paragraph"><p>The data must be stored with the column index varying fastest.</p></div>
+<div class="paragraph"><p>Thus:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>&lt;matrix rows="2" columns="2" dataType="fpx:integer" units="cml:dimensionless"&gt; 1 0 0 1 &lt;/matrix&gt;</tt></pre>
+</div></div>
+<div class="paragraph"><p>this encodes the matrix [ [1, 0], [0, 1] ]</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>&lt;matrix rows="2" columns="3" dataType="fpx:real" units="cml:dimensionless"&gt; 1.2 2.34 3.23 8.56 4.32 5.25 &lt;/matrix&gt;</tt></pre>
+</div></div>
+<div class="paragraph"><p>this encodes the matrix [ [1.2, 2.34, 3.23], [8.56, 4.32, 5.25] ]</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>&lt;matrix rows="2" columns="1" dataType="fpx:real" units="cml:dimensionless"&gt; (1.32)+i(4.76) (4.85)+i(2.88) &lt;/matrix&gt;</tt></pre>
+</div></div>
+<div class="paragraph"><p>this encodes the matrix [ [1.32+4.76i], [4.85+2.88i] ]</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>&lt;matrix rows="2" columns="2" dataType="xsd:boolean"&gt; true false false false &lt;/matrix&gt;</tt></pre>
+</div></div>
+<div class="paragraph"><p>this encodes the matrix [ [True, False], [False, False] ]</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>&lt;matrix rows="2" columns="2" dataType="xsd:string"&gt; yes no yes no &lt;/matrix&gt;</tt></pre>
+</div></div>
+<div class="paragraph"><p>this encodes the matrix [ ["yes", "no"], ["no", "yes"] ]</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>&lt;matrix rows="2" columns="2" dataType="xsd:string" separator=","&gt; maybe, perhaps, sometime, somewhere &lt;/matrix&gt;</tt></pre>
+</div></div>
+<div class="paragraph"><p>this encodes the matrix [ [" maybe", " perhaps"], [" sometime",
+" somewhere "] ]. Note again that where the separator
+is specified, whitespace is preserved.</p></div>
+</div>
+</div>
+</div>
+<div id="footnotes"><hr /></div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2012-01-03 16:03:37 GMT
+</div>
+</div>
+</body>
+</html>

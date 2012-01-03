@@ -1,0 +1,34 @@
+CMLComp: CML for Computational Atomistics
+=========================================
+
+NOTE: This document has been recovered and
+transcribed from the internet archive. Not
+all links work.
+
+CMLComp is designed to address the issue 
+of information exchange in the area of 
+computational atomistics, or molecular-scale 
+simulation.
+
+You might be here for one of the following reasons ...
+
+* To visualize a CMLComp document, go to ccViz.
+* To get the latest version of the CMLComp specification, 
+go to the git archive.
+* To explore CMLComp further, get documentation and 
+software, go to the CMLComp wiki. 
+
+About CMLComp
+-------------
+
+CML is the Chemical Markup Language.
+
+CMLComp is a dialect of CML - a subset, or profile, 
+with more strongly defined syntax and semantics.
+
+CMLComp consists of microformats, which encode 
+commonly-used data idioms, and a document structure 
+which provides human-accessible information.
+
+For more documentation, please browse the CMLComp wiki.
+

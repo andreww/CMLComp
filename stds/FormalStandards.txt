@@ -1,0 +1,99 @@
+CMLComp Standardization
+=======================
+
+CML standards
+-------------
+
+link:http://www.xml-cml.org[CML] is currently formally 
+described only by a WXS (W3C XML Schema) Schema. It is 
+not intended that CML's syntax and semantics are entirely 
+defined by this schema, but in the absence of a more 
+complete schema language, no other formal schemata are 
+available.
+
+CMLComp standards
+-----------------
+
+CMLComp is a subset of CML which has three primary layers:
+
+* Microformats for useful information: CmlMicroformats
+* A document structure: DocumentStructure
+* A lightweight semantic mechanism, organized around the 
+principle of dictionary references: DictRefs? 
+
+A description of the background to and interplay between 
+these layers is available in this paper (unpublished, 
+in submission).
+
+The syntax of the first two components, microformats and 
+document structure, can be expressed quite aptly in a 
+mixture of Relax-NG and Schematron (commonly called 
+Relaxotron).
+
+The development of this schema is still underway. Recent 
+versions are available from the git repository at 
+http://www.uszla.me.uk/git/CMLComp.git (view online 
+at http://uszla.me.uk/gitweb/CMLComp.git).
+
+CMLComp conformance levels
+--------------------------
+
+There are two levels of conformance for CompCML; microformat 
+conformance and document structure conformance.
+
+It is important to note that neither of these conformance 
+levels are affected by the use of XML languages other than 
+CML - microformats may be inserted into a non-CML document, 
+and it still be conformant, and equally, non-CML elements may 
+be used (in certain places) within a correctly structured 
+CML document, and it still be conformant.
+
+Furthermore, note that CMLComp defines the syntax and semantics 
+of only a small portion of the full CML language. Where CML 
+elements are used whose behaviour is not defined by CMLComp, 
+conformance levels are not affected - that is to say that you 
+may use additional CML elements within 
+your CMLComp documents.
+
+For information on how to use a schema validator to check 
+conformance, see ConformanceCheckers.
+
+CMLComp-micro
+-------------
+
+CMLComp-micro conformance guarantees that all CMLComp 
+microstructures used within a document are syntactically 
+correct according to CompCML strictures. This enables 
+CMLComp microformats to be embedded within any XML file; 
+for example within an XHTML document, or a CML document 
+format of your own devising.
+
+If a document conforms to CMLComp-micro, then information 
+can be extracted and machine processed by CMLComp-aware 
+tools.
+
+To check microformat conformance, run your document through 
+a schema checker against this schema.
+
+For further details on what microformats are governed by 
+CMLComp, and their definition, see CmlMicroformats.
+
+CMLComp-doc
+-----------
+
+CMLComp-doc conformance guarantees not only that all CMLComp 
+microstructures used in a document are correct, but also that 
+the document is structured according to the conventions of 
+CMLComp.
+
+Conformance to this level allows document-level viewing tools 
+to be used, as well as more powerful analysis programs. It 
+also enables human comprehension of your documents by conforming 
+to commonly understood conventions.
+
+To check document-level conformance, run your document through 
+a schema checker against this schema.
+
+For further details on the CMLComp document structure, see 
+DocumentStructure.
+

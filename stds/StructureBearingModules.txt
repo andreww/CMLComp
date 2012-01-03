@@ -1,0 +1,152 @@
+Structure-bearing modules
+=========================
+
+Background
+----------
+
+This specification governs the semantics of a 
+series of structure-bearing modules - eg modules 
+which represent step-by-step information on the 
+progress of a simulation, and hold data on the 
+size and shape of a unit cell and of the atomic 
+coordinates within it.
+
+It assumes the definitions of the following 
+microstructures, documented in CmlMicroformats.
+
+* `<molecule>` - both fractional and Cartesian
+* `<lattice>`
+* `<crystal>` - new-style only, ie containing 
+`<cellParameter>`, not `<scalar>`
+
+Rules
+-----
+
+Where a document has a series of modules, each of 
+which contain structural information - fractional 
+coordinates and a unit cell - then this page 
+describes the structural semantics of the document.
+
+[horizontal]
+1:: Pairing atomic coordinates and unit cells within a module. 
+1.1::: If a module contains one molecule, plus one of 
+lattice or crystal, then the atomic coordinates of the 
+molecule are taken to lie in the unit cell defined by the 
+lattice or crystal.
+1.2::: If both lattice or crystal appear; or more than 
+one of each; then they are assumed to be different 
+representations of the same unit cell, and a reader 
+SHOULD pay attention to the lattice (since it gives 
+information on the Cartesian orientation of the cell).
+1.3::: Where a crystal is provided but not a lattice 
+then extra information (the orientation) is needed to 
+fully specify the system in Cartesian space. This 
+specification does not say how to retrieve this 
+information. CML provides representations, but we have 
+not yet come to consensus on how to do this. However, 
+in the absence of other information, it is reasonable 
+to assume standard crystallographic convention (a is 
+parallel to the Cartesian x-axis, and the ab plane 
+is parallel to the xy plane.) (A right-handed convention 
+is assumed, and though the origin is also left 
+unspecified, we identify the cell's origin as the 
+Cartesian origin)
+1.4::: Molecular coordinates:
+1.4.1:::: Where the molecule provides fractional 
+coordinates, then those coordinates are relative to 
+the unit cell provided.
+1.4.2:::: Where the molecule provides Cartesian 
+coordinates, then if the unit cell is a lattice, the 
+atoms may be placed unambiguously; where the unit cell 
+is a crystal, then 1.3 applies.
+1.5::: Unaddressed areas:
+1.5.1:::: We explicitly do not talk about symmetry in this 
+spec - although it is representable in CML we haven't 
+yet come to consensus on how to do it.
+1.5.2:::: When a module has no molecule, its semantics 
+are undefined.
+1.5.3:::: When more than one molecule appears in a module, 
+their semantics are undefined.
+2:: Understanding series of modules. 
+2.1::: There may be multiple modules in a document. Where 
+they are all at the same level (probably children of cml) 
+then we can assume that sequential modules have some relation 
+to each other, and that structures can be extracted from 
+each and stored as a series.
+2.2::: We consider only modules containing one molecule. 
+Other modules are implicitly excluded from the series.
+2.3::: There are two classes of such series.
+2.3.1:::: Varying unit cells. Every module MUST contain 
+a unit cell.
+2.3.2:::: Static unit cells. The first module MUST have a 
+unit cell; the final MAY have a unit cell; all intervening 
+modules MUST NOT contain unit cells.
+2.4::: Where not all modules have unit cells, the unit cell 
+specified in the first module is considered to apply to all
+succeeding modules.
+2.5::: Unaddressed areas.
+2.5.1:::: Nested modules (modules within modules) have 
+undefined semantics.
+2.5.2:::: Series of modules which are not governed by 2.3.1 
+or 2.3.2 - ie some but not all of which have unit cells, 
+including non-initial and non-final modules - have 
+undefined semantics.
+
+Summary
+-------
+
+The rules above may be summarized as saying that a 
+structure-bearing module is understood to possess:
+
+* a list of atomic positions (which will be directly 
+included in the module). This may be provided as Cartesian 
+or fractional coordinates.
+* a unit cell (which may be directly included in the module, 
+or inherited from the first module in the series). This 
+may be provided as crystal parameters or lattice vectors. 
+
+and that such structure-bearing modules may be found in 
+a series, representing a string of related structures.
+
+Rationale
+---------
+
+These rules are intended to be easy enough that a SAX-based 
+parser can implement them. They are also intended to have 
+sufficient grey areas that
+
+* code-specific details can be included where necessary
+* further standardization (governing symmetry for example) 
+is not excluded, and may be experimented with. 
+
+Note that the rules as they stand (ie ignoring all the areas 
+which have undefined semantics) do not by any means exhaust 
+the use we currently make of CMLComp. That is, in several 
+cases, we explicitly stray into undefined semantics on a 
+code-by-code basis, defining code-specific semantics for 
+otherwise undefined structure.
+
+Implementations
+---------------
+
+I have now written a parser which reads files according to the 
+above rules (assuming that the documents it parses already 
+conform to the RelaxNG CmlMicroformats spec. (it will probably 
+behave very strangely otherwise), and further makes the choices that:
+
+* If more than one molecule appears in a module, it 
+ignores all but the first.
+* Modules nested more than one deep are ignored.
+* Modules which don't contain a molecule are noted 
+and marked as such.
+* Modules can mix and match crystals and lattices.
+(and it also reads the unit attribute on everything, but 
+does nothing with the result) 
+
+These design choices are driven by a mixture of ease of 
+writing, and extensibility, since the parser won't error 
+out if fed documents that go into grey areas above.
+
+This parser (in C, requiring expat) is available at 
+http://uszla.me.uk/source/misc/cmlReader.tgz. 
+

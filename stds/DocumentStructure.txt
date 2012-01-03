@@ -1,0 +1,21 @@
+DocumentStructure
+=================
+
+CMLComp consiste of CmlMicroformats which are 
+strung together in a document - the structure 
+of this document is well-defined, in order to 
+allow the retrieval of information easily.
+
+The document structure is described in the 
+schema in http://www.uszla.me.uk/cgi-bin/gitweb.cgi?p=CMLComp.git;a=blob_plain;f=DocumentStructure.rnc
+and is documented here.
+
+There are several aspects to this document 
+structure, which are being addressed one by one.
+
+From the point of view of how structures and unit 
+cells are related within a series of modules 
+through a document:
+
+* StructureBearingModules
+

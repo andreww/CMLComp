@@ -1,0 +1,51 @@
+Representing and identifying input quantities in CMLComp
+========================================================
+
+Parameters is a title for data within CMLComp which is 
+specified as input in the course of a computational 
+workflow. For example, this might be the initial 
+temperature or pressure of a molecular 
+dynamics run. (Note that this specification very 
+closely parallels that of CmlProperties).
+
+Parameters are written in CML by encoding the relevant 
+quantity using the microformats shown in CmlData, and 
+then wrapping that with a <parameter> tag, carrying 
+certain attributes which describe the property.
+
+There SHOULD be a dictRef attribute (see CmlDictRefs?) 
+which points to a dictionary entry describing (either 
+in human- or machine-readable fashion) the context and 
+meaning of the parameter in question. This MUST be a 
+QName, and the relevant namespace prefix MUST be declared. 
+(However, there is no requirement that the dictionary 
+referred to be accessible, or even exist.)
+
+There MAY be a title attribute which is a short title, 
+intended only for human consumption, describing this 
+quantity. This alone will not be sufficient for full 
+disambiguation, but might be used for eg displaying a 
+title for the quantity in a visualization program. This 
+may be any string, and CMLComp places no rules on its 
+interpretation.
+
+There MAY be an id attribute, which must be an XML Name. 
+(See CmlIdRef? for further information on the meaning 
+and use of id/ref attributes.)
+
+CMLComp puts no further restrictions on any attributes 
+(in any, or no namespace) which may be put on 
+a <parameter> tag. 
+
+Thus, for example:
+
+----
+<parameter title="Initial temperature" dictRef="dlpoly:Tinit">
+  <scalar dataType="fpx:real" units="dlpolyUnits:K"> 298.15 </scalar>
+</property>
+----
+
+defines the initial temperature of a DL_Poly molecular dynamics
+run.
+
+
