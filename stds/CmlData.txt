@@ -1,6 +1,17 @@
 Representing data in CML
 ========================
 
+NOTE: This document has been recovered and
+transcribed from the internet archive. It 
+was originally written by Toby White and 
+other members of the eMinerals and Materials
+Grid teams. Not all links work and not all
+material has been located but hopefully this
+document will be useful to people intrested in 
+CML for computational atomic scale simulation.
+Further material can be found 
+link:../index.html[here].
+
 Basic datatypes
 ---------------
 

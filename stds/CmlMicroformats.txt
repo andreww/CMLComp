@@ -1,11 +1,61 @@
 CmlMicroformats
 ===============
 
-* link:./CmlData.html[CmlData]
-* link:./CmlParameters.html[CmlParameters]
-* link:./DictRefs.html[DictRefs]
-* link:./FloatingPointXml.html[FloatingPointXml]
-* link:./CMLMetadata.html[CMLMetadata]
-* link:./CMLProperties.html[CMLProperties]
-* link:./CmlLattices.html[CmlLattices]
-* link:./CmlCrystals.html[CmlCrystals]
+
+NOTE: This document has been recovered and
+transcribed from the internet archive. It 
+was originally written by Toby White and 
+other members of the eMinerals and Materials
+Grid teams. Not all links work and not all
+material has been located but hopefully this
+document will be useful to people intrested in 
+CML for computational atomic scale simulation.
+Further material can be found 
+link:../index.html[here].
+
+CMLComp is built from a series of components, 
+represented by microformats in the CML 
+language.
+
+The currently-used ones are defined in the 
+schema: http://uszla.me.uk/gitweb/CMLComp.git/master:/Microformats.rnc
+
+To validate a document against Microformats (which 
+is to say - a document may contain any amount of 
+any XML dialect, but if it uses CMLComp microformats, 
+it uses them correctly), then it must validate 
+against http://uszla.me.uk/gitweb/CMLComp.git/master:/CMLMicro.rnc 
+(see http://cmlcomp.org/validator/)
+
+This page holds the documentation for these microformats.
+
+In short, these consist of
+
+* scalar/array/matrix combinations of character, 
+logical, integer, real, and complex data. 
+See link:./CmlData.html[CmlData]. 
+
+[NOTE]
+The representation of numerical data presents 
+particular problems in XML - see link:./FloatingPointXml.html[FloatingPointXml].
+
+* metadata - in simple name/value pairs, no controlled 
+vocabulary, and lists of metadata. See 
+link:./CmlMetadata.html[CmlMetadata]
+
+* parameters - which are essentially input quantities, 
+and lists of parameters. See link:./CmlParameters.html[CmlParameters]
+
+* properties - which are essentially output, calculated, 
+quantities - and lists of properties. See 
+link:./CmlProperties.html[CmlProperties]
+
+* molecules - which are a set of 3-D atomic coordinates, with 
+at least a label for each atom. See link:./CmlMolecules.html[CmlMolecules] 
+
+* lattices - defining a crystal lattice by means of three 
+lattice vectors. See link:./CmlLattices.html[CmlLattices]
+
+* crystals - defining a crystal lattice by means of three 
+lengths and three angles. See link:./CmlCrystals.html[CmlCrystals]
+
