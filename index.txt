@@ -41,12 +41,14 @@ validation service (which made use of Henri Sivonen's
 link:http://validator.nu[validator.nu]). I have been 
 able to recover most of the specification text from 
 the Internet Archive service and host a version 
-(converted in asciidoc) here. Some pages are missing. 
+(converted in asciidoc) 
+link:http://www1.gly.bris.ac.uk/~walker/CMLComp/stds[here].
+Some pages are missing. 
 I also have the Python script that drives the 
 validation service but this cannot be used because 
 I have been unable to locate copies of the schemata. 
 I've put copies of all documents I have into a git 
-archive hosted on GitHub.
+archive hosted on link:https://github.com/andreww/CMLComp[GitHub].
 
 FoX
 ---
@@ -84,8 +86,10 @@ needed advanced features not supported by mainstream
 browsers. In order to overcome this limitation the 
 transforms are bundled with a command line program (also 
 exposed as an online service). The CCViz code is 
-available on GitHub and I’ve set deployed the online 
-service (see this demo). A slightly modified version of 
+available on link:https://github.com/andreww/ccviz[GitHub] 
+and I've set deployed the 
+link:http://www1.gly.bris.ac.uk/~walker/cgi-bin/ccViz/index.cgi[online] 
+service. A slightly modified version of 
 the command line version is also distributed with SIESTA 
 (the changes should probably be merged back into the 
 master version of the code). Note that the CCViz source 
