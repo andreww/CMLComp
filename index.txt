@@ -95,6 +95,14 @@ the command line version is also distributed with SIESTA
 master version of the code). Note that the CCViz source 
 contains a several CML dictionaries.
 
+For example, the link:http://www.icmab.es/siesta-joomla/[SIESTA]
+DFT code produces link:./fire_benzene.xml[this CML document] 
+from one of its tests. Running this through CCViz produces 
+link:./fire_benzene.xhtml[this html document]. The SIESTA 
+dictionary (used to populate the 
+right hand column of the output) can be found 
+link:https://github.com/andreww/ccviz/blob/master/dictionaries/siestaDict.xml[here].
+
 Golem
 -----
 
