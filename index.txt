@@ -69,6 +69,10 @@ bug fixes and a handful of new features. FoX is used and
 shipped with a number of atomic scale simulation codes 
 (e.g. GULP and SIESTA) that can produce CML output. 
 
+Also see the 
+link:http://www1.gly.bris.ac.uk/~walker/software/FDOMTS-1.1.tgz[DOM] 
+and link:https://github.com/andreww/fox-sax-test[SAX] test suites.
+
 CCViz
 -----
 
@@ -117,4 +121,14 @@ construct application-agnostic tools for processing CML
 documents. The link:http://code.google.com/p/pygolem/[code] 
 and link:http://www.lexical.org.uk/golem/docs/[documentation]
 is available and contains additional dictionaries. 
+
+CML interatomic potentials and other ideas
+------------------------------------------
+
+I spent a bit of time looking at how to represent interatomic
+potentials using a mixture of CML and context MathML. The code
+is link:https://github.com/andreww/cml_Pots[here].
+
+There is a project to represent XML pseudopotential data. Details
+can be found link:http://fisica.ehu.es/ag/xml/pseudo/index.html[here].
 
