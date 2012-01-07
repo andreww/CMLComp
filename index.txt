@@ -73,6 +73,165 @@ Also see the
 link:http://www1.gly.bris.ac.uk/~walker/software/FDOMTS-1.1.tgz[DOM] 
 and link:https://github.com/andreww/fox-sax-test[SAX] test suites.
 
+CML and atomic scale simulation codes
+-------------------------------------
+
+Several members of the projects spent time 
+modifying simulation codes such that they 
+created CMLComp documents as output. Listed 
+below are brief outlines of what was done to 
+which codes and what I think the current state 
+is. We may want to spend some time at the 
+workshop updating this list or move it to a 
+more easily updatable location. 
+
+In order to produce CMLComp documents we made 
+use of the FoX_wcml module. Basic instructions 
+for using this with a simulation code can be 
+found in 
+link:http://www1.gly.bris.ac.uk/~walker/FoX/WCML_tutorial.html[this 
+document]. We also developed insight on how 
+to successfully modify simulation codes - key 
+guidelines are:
+
+* Try to isolate the CML output routines for
+any given simulation code in one (or a handful 
+of) Fortran module(s). Write little procedures 
+to generate each "chunk" of CML - the output 
+values (in simulation-code native units) 
+should be arguments to the procedures. As 
+well as allowing code reuse, this minimises 
+the chance of later unrelated modification 
+resulting in the attempted generation of 
+ill-formed XML and avoids cluttering key 
+parts of the simulation code with extraneous 
+material. Things like namespace stings, output 
+control variables and unit numbers are usually 
+variables in the CML output module. A major 
+advantage is that this makes it easy to build 
+the code in environments where FoX is not 
+available (e.g. where only a Fortran 
+77 compiler is available).
+* Indent your source code to match the nested 
+structure of the XML output document.
+* Use wcml, but if this does not support the 
+generation of a particular document fragment 
+you can make use of wxml. The opaque `xmlf_t`
+variable can be shared between these two 
+output methods. Your output subroutine using 
+wxml to write CML can eventually become a 
+subroutine in FoX_wcml.
+* Bundle FoX with the source code of atomic 
+scale application and make use of the 
+existing compilation infrastructure.
+* Try and obtain buy-in from the 
+simulation-code's developers. The best people 
+to add CML output to a simulation code are 
+people who already know the code-base and 
+will continue to work on the code. 
+* It is important to recognise that the 
+simulation code will continue to evolve 
+after the CML output option has been 
+added. Plan for this. The ideas above 
+should help.
+
+GULP
+^^^^
+
+link:http://projects.ivec.org/gulp/[GULP] is 
+an atomistic simulation code based on the 
+use of interatomic potential functions 
+supporting energy minimisation, molecular 
+dynamics, structure prediction using 
+genetic algorithms and much more. Currently 
+the code ships with FoX and supports the 
+option output cml to generate a CMLComp 
+output file. The most common types of calculation 
+are supported - structurally Gulp's CMLComp output 
+documents can be rather complex. (FoX 4.1.2, 
+no dictionary)
+
+SIESTA
+^^^^^^
+
+link:http://www.icmab.es/siesta-joomla/[SIESTA] 
+makes use of numerical atom-like basis sets 
+and pseudopotentials to obtain an efficient 
+implementation of density functional theory 
+for crystals. The code is distributed with 
+FoX and, by default, produces CMLComp 
+documents for all calculations. The testing 
+framework makes use of CML documents. XML 
+documents are also created to represent 
+the pseudopotentials. (Upgrading to FoX 
+4.1.2, link:https://github.com/andreww/ccviz/blob/master/dictionaries/siestaDict.xml[partial dictionary])
+
+Dalton
+^^^^^^
+
+The 
+link:http://dirac.chem.sdu.dk/daltonprogram.org/www/description.html[Dalton]
+code is a powerful tool for the calculation 
+of a wide range of molecular properties at 
+different levels of theory (HF, DFT, post-HF). 
+There was a project (c. 2007/8?) to generate 
+CML output. The current status is unknown.
+
+OSSIA
+^^^^^
+
+OSSIA is Martin Dove’s code for Monte Carlo 
+modelling of cation site ordering. Produces 
+CMLComp output. (Current status unknown, 
+link:https://github.com/andreww/ccviz/blob/master/dictionaries/ossiaDict.xml[extensive dictionary])
+
+CASTEP
+^^^^^^
+
+link:http://www.castep.org/[CASTEP] is a 
+plane-wave and pseudopotentials implementation 
+of density functional theory applied to 
+crystals. This was the main tool of the 
+Materials Grid project, which produced a 
+version of CASTEP 4.3 capable of generating 
+CMLComp documents. (link:https://github.com/andreww/ccviz/blob/master/dictionaries/castepDict.4.3.xml[extensive dictionary], 
+unknown if CML output is available from current version)
+
+Mopac
+^^^^^
+
+link:http://openmopac.net/[OpenMopac] is a 
+is a semiempirical quantum chemistry program 
+based on Dewar and Thiel's NDDO approximation. 
+I think there was a project (c. 2007/8?) to 
+generate CML output. The current status is unknown.
+
+Abinit
+^^^^^^
+
+link:http://www.abinit.org/[Abinit] is another 
+plane-wave and pseudopotentials DFT code. It 
+can make use of FoX to allow pseudopotential 
+interoperability with SIESTA (XML, not CML). 
+
+DL_Poly
+^^^^^^^
+
+link:http://www.stfc.ac.uk/CSE/randd/ccg/software/DL_POLY/25526.aspx[DL_Poly] 
+is a force-field based molecular dynamics code. 
+During the eMinerals project a version of 
+DL_Poly_3 existed which could create CMLComp 
+documents. The current status is unknown. (Martin 
+Dove reports that he has a dictionary)
+
+NW_Chem
+^^^^^^^
+
+I am aware of recent work to allow 
+link:http://www.nwchem-sw.org/[NW_Chem] 
+to output CMLComp documents. 
+
+
 CCViz
 -----
 

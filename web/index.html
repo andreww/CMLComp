@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
 <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
-<meta name="generator" content="AsciiDoc 8.6.6" />
+<meta name="generator" content="AsciiDoc 8.6.5" />
 <title>CMLComp - eMinerals and Materials Grid resources</title>
 <style type="text/css">
 /* Shared CSS for AsciiDoc xhtml11 and html5 backends */
@@ -179,7 +179,7 @@ div.quoteblock, div.verseblock {
   margin-left: 1.0em;
   margin-right: 10%;
   border-left: 5px solid #f0f0f0;
-  color: #888;
+  color: #777777;
 }
 
 div.quoteblock > div.attribution {
@@ -514,29 +514,6 @@ th.tableblock.valign-middle, td.tableblock.valign-middle {
 th.tableblock.valign-bottom, td.tableblock.valign-bottom {
   vertical-align: bottom;
 }
-
-
-/*
- * manpage specific
- *
- * */
-
-body.manpage h1 {
-  padding-top: 0.5em;
-  padding-bottom: 0.5em;
-  border-top: 2px solid silver;
-  border-bottom: 2px solid silver;
-}
-body.manpage h2 {
-  border-style: none;
-}
-body.manpage div.sectionbody {
-  margin-left: 3em;
-}
-
-@media print {
-  body.manpage div#toc { display: none; }
-}
 </style>
 <script type="text/javascript">
 /*<![CDATA[*/
@@ -610,7 +587,7 @@ toc: function (toclevels) {
   var i;
   for (i = 0; i < toc.childNodes.length; i++) {
     var entry = toc.childNodes[i];
-    if (entry.nodeName == 'div'
+    if (entry.nodeName == 'DIV'
      && entry.getAttribute("class")
      && entry.getAttribute("class").match(/^toclevel/))
       tocEntriesToRemove.push(entry);
@@ -656,7 +633,7 @@ footnotes: function () {
   var entriesToRemove = [];
   for (i = 0; i < noteholder.childNodes.length; i++) {
     var entry = noteholder.childNodes[i];
-    if (entry.nodeName == 'div' && entry.getAttribute("class") == "footnote")
+    if (entry.nodeName == 'DIV' && entry.getAttribute("class") == "footnote")
       entriesToRemove.push(entry);
   }
   for (i = 0; i < entriesToRemove.length; i++) {
@@ -815,6 +792,180 @@ and <a href="https://github.com/andreww/fox-sax-test">SAX</a> test suites.</p></
 </div>
 </div>
 <div class="sect1">
+<h2 id="_cml_and_atomic_scale_simulation_codes">CML and atomic scale simulation codes</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Several members of the projects spent time
+modifying simulation codes such that they
+created CMLComp documents as output. Listed
+below are brief outlines of what was done to
+which codes and what I think the current state
+is. We may want to spend some time at the
+workshop updating this list or move it to a
+more easily updatable location.</p></div>
+<div class="paragraph"><p>In order to produce CMLComp documents we made
+use of the FoX_wcml module. Basic instructions
+for using this with a simulation code can be
+found in
+<a href="http://www1.gly.bris.ac.uk/~walker/FoX/WCML_tutorial.html">this
+document</a>. We also developed insight on how
+to successfully modify simulation codes - key
+guidelines are:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Try to isolate the CML output routines for
+any given simulation code in one (or a handful
+of) Fortran module(s). Write little procedures
+to generate each "chunk" of CML - the output
+values (in simulation-code native units)
+should be arguments to the procedures. As
+well as allowing code reuse, this minimises
+the chance of later unrelated modification
+resulting in the attempted generation of
+ill-formed XML and avoids cluttering key
+parts of the simulation code with extraneous
+material. Things like namespace stings, output
+control variables and unit numbers are usually
+variables in the CML output module. A major
+advantage is that this makes it easy to build
+the code in environments where FoX is not
+available (e.g. where only a Fortran
+77 compiler is available).
+</p>
+</li>
+<li>
+<p>
+Indent your source code to match the nested
+structure of the XML output document.
+</p>
+</li>
+<li>
+<p>
+Use wcml, but if this does not support the
+generation of a particular document fragment
+you can make use of wxml. The opaque <tt>xmlf_t</tt>
+variable can be shared between these two
+output methods. Your output subroutine using
+wxml to write CML can eventually become a
+subroutine in FoX_wcml.
+</p>
+</li>
+<li>
+<p>
+Bundle FoX with the source code of atomic
+scale application and make use of the
+existing compilation infrastructure.
+</p>
+</li>
+<li>
+<p>
+Try and obtain buy-in from the
+simulation-code&#8217;s developers. The best people
+to add CML output to a simulation code are
+people who already know the code-base and
+will continue to work on the code.
+</p>
+</li>
+<li>
+<p>
+It is important to recognise that the
+simulation code will continue to evolve
+after the CML output option has been
+added. Plan for this. The ideas above
+should help.
+</p>
+</li>
+</ul></div>
+<div class="sect3">
+<h4 id="_gulp">GULP</h4>
+<div class="paragraph"><p><a href="http://projects.ivec.org/gulp/">GULP</a> is
+an atomistic simulation code based on the
+use of interatomic potential functions
+supporting energy minimisation, molecular
+dynamics, structure prediction using
+genetic algorithms and much more. Currently
+the code ships with FoX and supports the
+option output cml to generate a CMLComp
+output file. The most common types of calculation
+are supported - structurally Gulp&#8217;s CMLComp output
+documents can be rather complex. (FoX 4.1.2,
+no dictionary)</p></div>
+</div>
+<div class="sect3">
+<h4 id="_siesta">SIESTA</h4>
+<div class="paragraph"><p><a href="http://www.icmab.es/siesta-joomla/">SIESTA</a>
+makes use of numerical atom-like basis sets
+and pseudopotentials to obtain an efficient
+implementation of density functional theory
+for crystals. The code is distributed with
+FoX and, by default, produces CMLComp
+documents for all calculations. The testing
+framework makes use of CML documents. XML
+documents are also created to represent
+the pseudopotentials. (Upgrading to FoX
+4.1.2, <a href="https://github.com/andreww/ccviz/blob/master/dictionaries/siestaDict.xml">partial dictionary</a>)</p></div>
+</div>
+<div class="sect3">
+<h4 id="_dalton">Dalton</h4>
+<div class="paragraph"><p>The
+<a href="http://dirac.chem.sdu.dk/daltonprogram.org/www/description.html">Dalton</a>
+code is a powerful tool for the calculation
+of a wide range of molecular properties at
+different levels of theory (HF, DFT, post-HF).
+There was a project (c. 2007/8?) to generate
+CML output. The current status is unknown.</p></div>
+</div>
+<div class="sect3">
+<h4 id="_ossia">OSSIA</h4>
+<div class="paragraph"><p>OSSIA is Martin Dove’s code for Monte Carlo
+modelling of cation site ordering. Produces
+CMLComp output. (Current status unknown,
+<a href="https://github.com/andreww/ccviz/blob/master/dictionaries/ossiaDict.xml">extensive dictionary</a>)</p></div>
+</div>
+<div class="sect3">
+<h4 id="_castep">CASTEP</h4>
+<div class="paragraph"><p><a href="http://www.castep.org/">CASTEP</a> is a
+plane-wave and pseudopotentials implementation
+of density functional theory applied to
+crystals. This was the main tool of the
+Materials Grid project, which produced a
+version of CASTEP 4.3 capable of generating
+CMLComp documents. (<a href="https://github.com/andreww/ccviz/blob/master/dictionaries/castepDict.4.3.xml">extensive dictionary</a>,
+unknown if CML output is available from current version)</p></div>
+</div>
+<div class="sect3">
+<h4 id="_mopac">Mopac</h4>
+<div class="paragraph"><p><a href="http://openmopac.net/">OpenMopac</a> is a
+is a semiempirical quantum chemistry program
+based on Dewar and Thiel&#8217;s NDDO approximation.
+I think there was a project (c. 2007/8?) to
+generate CML output. The current status is unknown.</p></div>
+</div>
+<div class="sect3">
+<h4 id="_abinit">Abinit</h4>
+<div class="paragraph"><p><a href="http://www.abinit.org/">Abinit</a> is another
+plane-wave and pseudopotentials DFT code. It
+can make use of FoX to allow pseudopotential
+interoperability with SIESTA (XML, not CML).</p></div>
+</div>
+<div class="sect3">
+<h4 id="_dl_poly">DL_Poly</h4>
+<div class="paragraph"><p><a href="http://www.stfc.ac.uk/CSE/randd/ccg/software/DL_POLY/25526.aspx">DL_Poly</a>
+is a force-field based molecular dynamics code.
+During the eMinerals project a version of
+DL_Poly_3 existed which could create CMLComp
+documents. The current status is unknown. (Martin
+Dove reports that he has a dictionary)</p></div>
+</div>
+<div class="sect3">
+<h4 id="_nw_chem">NW_Chem</h4>
+<div class="paragraph"><p>I am aware of recent work to allow
+<a href="http://www.nwchem-sw.org/">NW_Chem</a>
+to output CMLComp documents.</p></div>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="_ccviz">CCViz</h2>
 <div class="sectionbody">
 <div class="paragraph"><p>Another product from Toby, CCViz allows a CMLComp
@@ -879,7 +1030,7 @@ can be found <a href="http://fisica.ehu.es/ag/xml/pseudo/index.html">here</a>.</
 <div id="footer">
 <div id="footer-text">
 Version 1.0<br />
-Last updated 2012-01-06 16:54:20 GMT
+Last updated 2012-01-07 21:08:20 GMT
 </div>
 </div>
 </body>
