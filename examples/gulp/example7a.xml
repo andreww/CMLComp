@@ -1,0 +1,1365 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="http://www.eminerals.org/XSLT/display.xsl" type="text/xml"?>
+<cml convention="CMLComp" fileId="example7a.xml" xmlns="http://www.xml-cml.org/schema" xmlns:gulp="http://www.ivec.org/GULP/" xmlns:gulp-units="http://www.ivec.org/GULP/units" xmlns:eMinerals="http://www.eminerals.org/namespace" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fpx="http://www.uszla.me.uk/fpx" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:units="http://www.uszla.me.uk/FoX/units" xmlns:cmlUnits="http://www.xml-cml.org/units/units" xmlns:siUnits="http://www.xml-cml.org/units/siUnits" xmlns:atomicUnits="http://www.xml-cml.org/units/atomic">
+  <metadata name="UUID" content="79ddbe80-408c-11e1-5154-f824f9f7bd8d"/>
+  <metadata name="eMinerals:cmlSubsetVersion" content="0.9"/>
+  <metadataList>
+    <metadata name="eMinerals:Program" content="GULP"/>
+    <metadata name="eMinerals:Version" content="3.0.2-beta"/>
+    <metadata name="eMinerals:Nodes" content="1"/>
+    <metadata name="eMinerals:StartTime" content="2012-01-16T21:52:45+0000"/>
+  </metadataList>
+  <!--In subroutine gulp_cml_outkey-->
+  <parameterList dictRef="gulp:outkey" title="Output keywords">
+    <parameter dictRef="gulp:fitkey" name="perform fitting run">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:trankey" name="transition state search by rfo method">
+      <scalar dataType="xsd:boolean">true</scalar>
+    </parameter>
+    <parameter dictRef="gulp:optkey" name="perform optimisation run">
+      <scalar dataType="xsd:boolean">true</scalar>
+    </parameter>
+    <parameter dictRef="gulp:gradkey" name="perform gradient run">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:noenergykey" name="do not calculate the energy">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:key" name="perform single point run">
+      <scalar dataType="xsd:boolean">true</scalar>
+    </parameter>
+    <parameter dictRef="gulp:montecarlokey" name="Perform Monte Carlo run">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:moleculardynamicskey" name="Perform Molecular Dynamics run">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:metadynamicskey" name="Perform Metadynamics run">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:minimumiamgekey" name="Use minimum image algorithm">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:freekey" name="perform free energy run">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:zsisakey" name="use ZSISA approach to free energy derivatives">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:statkey" name="optimise static energy before free energy">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:key" name="do not optimise during bulk calculation">
+      <scalar dataType="xsd:boolean">true</scalar>
+    </parameter>
+    <parameter dictRef="gulp:conpkey" name="constant pressure calculation">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:convkey" name="constant volume calculation">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:cellokey" name="optimise unit cell only">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:noflkey" name="no flags to be read in - assumed to be zero">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:shellokey" name="only shells and radii to be optimised">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:breakey" name="only radii to be optimised">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:nobrkey" name="radii not to be optimised">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:isokey" name="only isotropic cell expansion allowed">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:noelkey" name="electrostatic energy to be excluded">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:qokkey" name="non-charge neutral unit cell allowed">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:dipolekey" name="include dipolar correction energy">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:propkey" name="calculate properties for final geometry">
+      <scalar dataType="xsd:boolean">true</scalar>
+    </parameter>
+    <parameter dictRef="gulp:oldukey" name="use old units where appropriate">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:phonkey" name="calculate phonons for final geometry">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:nonokey" name="exclude non-analytic correction to gamma point phonons">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:kfullkey" name="generate K points for the full centred cell">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:defectkey" name="perform defect calculation after bulk run">
+      <scalar dataType="xsd:boolean">true</scalar>
+    </parameter>
+    <parameter dictRef="gulp:deffreeqkey" name="calculate defect frequencies">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:regikey" name="output region 1 at start of defect run">
+      <scalar dataType="xsd:boolean">true</scalar>
+    </parameter>
+    <parameter dictRef="gulp:r1234key" name="use region 2a displacements in 3 and 4 body energy">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:noanisokey" name="do not treat region 2b anisotropically">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:eigenkey" name="generate phonon eigenvectors">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:meankekey" name="calculate mean kinetic energy per atom during phonon calculation">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:qbondkey" name="compute bond increment charges">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:gakey" name="use genetic genetic">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:annealkey" name="use simulated annealling">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:intenkey" name="estimate IR intensities">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:lowekey" name="reduce symmetry according to imaginary modes">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:potkey" name="calculate electrostatic site potentials">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:zerkey" name="set the average site potential to zero">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:nodpkey" name="calculate electrostatic site potentials for all of region 1">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:efgkey" name="calculate electrostatic electric field gradient">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:nosymkey" name="turn off symmetry after structure generation">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:fullkey" name="generate full centred unit cell when symmetry is removed">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:symoffkey" name="turn off use of symmetry after structure generation">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:simukey" name="relax shell positions and radii during fitting">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:relaxkey" name="relax structure during fitting">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:nosdervkey" name="symmetry not to be used for first derivatives">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:outckey" name="dump constraints to restart file">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:nod2symkey" name="symmetry not to be used for second derivatives">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:nodsynkey" name="symmetry not to be used in defect calculation">
+      <scalar dataType="xsd:boolean">true</scalar>
+    </parameter>
+    <parameter dictRef="gulp:spatialkey" name="use spatial decomposition algorithm">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:QEqkey" name="use QEq electronegativity equalisation method">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:SandMkey" name="use S-M electronegativity equalisation method">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:oldEEMkey" name="use EEM electronegativity equalisation method - old parameters">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:EEMkey" name="use EEM electronegativity equalisation method - new parameters">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:bondkey" name="calculate bond lengths">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:avarkey" name="calculate average bond lengths">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:distkey" name="calculate distance">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:anglekey" name="calculate angles for valid three body terms">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:torskey" name="calculate torsion angles for valid four body terms">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:molqkey" name="find molecules and keep Coulomb terms">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:molmeckey" name="find molecules and Coulomb subtract 1-2/1-3 terms">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:molkey" name="find molecules and Coulomb subtract within molecule">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:molfixkey" name="fix connectivity based on initial geometry">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:comparekey" name="compare initial and final structures">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:unitkey" name="approximate initial Hessian by unit diagonal matrix">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:fBFGSkey" name="use full numerical Hessian in BFGS for fitting">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:conjkey" name="use conjugate gradients minimiser">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:posikey" name="ensure Hessian acts as positive-definite in Newton-Raphson">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:rfokey" name="optimisation step to be determined by RFO method">
+      <scalar dataType="xsd:boolean">true</scalar>
+    </parameter>
+    <parameter dictRef="gulp:outhesseigenkey" name="output eigenvalues and vectors of diagonalised Hessian">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:outhessinvkey" name="output inverse Hessian matrix when calculated exactly">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:dfpkey" name="use Davidon-Fletcher-Powell Hessian update">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:nofreqkey" name="suppress frequency output after phonon calculation">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:broadkey" name="broaden density of states curves">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:nokskey" name="do not use Brillouin zone symmetry when generating k points">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:operakey" name="output bulk symmetry operators">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:noexkey" name="do not freeze out atoms with no derivatives">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:nolist_mdkey" name="do not use list based methods for 3 &amp; 4-body terms in MD">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:nokpkey" name="do not print out list of k points">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:savekey" name="save defect matrices for restart">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:restkey" name="restore defect matrices from disk for restart">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:nozekey" name="exclude the zero point energy from phonon/free energy calcns">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:marvreg2key" name="surface energy to be calculated as per MARVIN">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:norepkey" name="no automatic cutoff to be used for repulsion">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:nomolkey" name="no molecular internal KE in initial MD velocity">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:makeeigarraykey" name="store all eigenvectors and frequencies after calculation">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:coreinfokey" name="output atomic information for &quot;cores&quot; used">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:debyewallerkey" name="calculate the mean squared displacement matrix (debye waller factor) for each atom">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:converteigenkey" name="convert the eigenvectors to Dove format before storing">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:rephasekey" name="make internal eigenvectors as real as possible &amp; normalise">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:arrayfrequencieskey" name="frequency output after phonon calculation from arrays">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:pdfkey" name="calculate Pair Distribution Functions">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:nowidthkey" name="suppress output of peak widths for Pair Distribution Functions">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:nopartialkey" name="suppress output of partial Pair Distribution Functions">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:PDFcutkey" name="use frequency cut-offs in PDF">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:PDFkeepkey" name="set rejected frequencies to limits in PDFS">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:powderSQWkey" name="calculate the powder averaged S(|Q|,w)">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter dictRef="gulp:SQWdispersionkey" name="calculate  S(Q,w) along a dispersion line">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+  </parameterList>
+  <!--In subroutine gulp_cml_outspec-->
+  <parameterList dictRef="gulp:outspec" title="Species parameters (for all configurations)">
+    <parameter title="Elemental Data Library (&quot;elefile&quot;) found in current directory" dictRef="gulp:elefile">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter title="Elemental Data Library (as specified in local.F90)" dictRef="gulp:elefile">
+      <scalar dataType="xsd:string">eledata</scalar>
+    </parameter>
+    <parameter title="Elemental Data Library  found at eledata" dictRef="gulp:elefile">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameter title="neutron scattering data read from a Library file?" dictRef="gulp:lneutronele">
+      <scalar dataType="xsd:boolean">false</scalar>
+    </parameter>
+    <parameterList dictRef="gulp:speciesparameters" title="Parameters for atom 1">
+      <parameter title="name" dictRef="gulp:specieslabel">
+        <scalar dataType="xsd:string">O    </scalar>
+      </parameter>
+      <parameter title="type" dictRef="gulp:speciestype">
+        <scalar dataType="xsd:string">Core  </scalar>
+      </parameter>
+      <parameter title="atomic number" dictRef="gulp:speciesatomicnumber">
+        <scalar dataType="xsd:integer" units="units:dimensionless">8</scalar>
+      </parameter>
+      <parameter title="atomic mass" dictRef="gulp:speciesatomicmass">
+        <scalar dataType="fpx:real" units="gulp-units:amu">1.600000000000e1</scalar>
+      </parameter>
+      <parameter title="charge" dictRef="gulp:speciescharge">
+        <scalar dataType="fpx:real" units="gulp-units:e">8.690200000000e-1</scalar>
+      </parameter>
+      <parameter title="covalent radii" dictRef="gulp:speciescovalentradii">
+        <scalar dataType="fpx:real" units="gulp-units:Ang">7.300000190735e-1</scalar>
+      </parameter>
+      <parameter title="ionic radii" dictRef="gulp:speciesionicradii">
+        <scalar dataType="fpx:real" units="gulp-units:Ang">0.000000000000e0</scalar>
+      </parameter>
+      <parameter title="Van der Waals radii" dictRef="gulp:speciesvanderwaslsradii">
+        <scalar dataType="fpx:real" units="gulp-units:Ang">1.360000014305e0</scalar>
+      </parameter>
+      <parameter title="bbar: coherent bound neutron scattering length" dictRef="gulp:speciesbbar">
+        <scalar dataType="fpx:real" units="gulp-units:Ang">5.802999734879e-5</scalar>
+      </parameter>
+      <parameter title="sigma_coh: coherent neutron scattering cross-section" dictRef="gulp:speciessigcoh">
+        <scalar dataType="fpx:real" units="gulp-units:Ang2">4.231700915950e-8</scalar>
+      </parameter>
+      <parameter title="sigma_inc: incoherent bound neutron scattering cross-section" dictRef="gulp:speciessiginc">
+        <scalar dataType="fpx:real" units="gulp-units:Ang2">2.986970066559e-12</scalar>
+      </parameter>
+      <parameter title="library symbol" dictRef="gulp:specieslibrarysymbol">
+        <scalar dataType="xsd:string">         </scalar>
+      </parameter>
+    </parameterList>
+    <parameterList dictRef="gulp:speciesparameters" title="Parameters for atom 2">
+      <parameter title="name" dictRef="gulp:specieslabel">
+        <scalar dataType="xsd:string">Mg   </scalar>
+      </parameter>
+      <parameter title="type" dictRef="gulp:speciestype">
+        <scalar dataType="xsd:string">Core  </scalar>
+      </parameter>
+      <parameter title="atomic number" dictRef="gulp:speciesatomicnumber">
+        <scalar dataType="xsd:integer" units="units:dimensionless">12</scalar>
+      </parameter>
+      <parameter title="atomic mass" dictRef="gulp:speciesatomicmass">
+        <scalar dataType="fpx:real" units="gulp-units:amu">2.430999946594e1</scalar>
+      </parameter>
+      <parameter title="charge" dictRef="gulp:speciescharge">
+        <scalar dataType="fpx:real" units="gulp-units:e">2.000000000000e0</scalar>
+      </parameter>
+      <parameter title="covalent radii" dictRef="gulp:speciescovalentradii">
+        <scalar dataType="fpx:real" units="gulp-units:Ang">1.100000023842e0</scalar>
+      </parameter>
+      <parameter title="ionic radii" dictRef="gulp:speciesionicradii">
+        <scalar dataType="fpx:real" units="gulp-units:Ang">0.000000000000e0</scalar>
+      </parameter>
+      <parameter title="Van der Waals radii" dictRef="gulp:speciesvanderwaslsradii">
+        <scalar dataType="fpx:real" units="gulp-units:Ang">1.639999985695e0</scalar>
+      </parameter>
+      <parameter title="bbar: coherent bound neutron scattering length" dictRef="gulp:speciesbbar">
+        <scalar dataType="fpx:real" units="gulp-units:Ang">5.375000238419e-5</scalar>
+      </parameter>
+      <parameter title="sigma_coh: coherent neutron scattering cross-section" dictRef="gulp:speciessigcoh">
+        <scalar dataType="fpx:real" units="gulp-units:Ang2">3.630503332381e-8</scalar>
+      </parameter>
+      <parameter title="sigma_inc: incoherent bound neutron scattering cross-section" dictRef="gulp:speciessiginc">
+        <scalar dataType="fpx:real" units="gulp-units:Ang2">7.949698716402e-10</scalar>
+      </parameter>
+      <parameter title="library symbol" dictRef="gulp:specieslibrarysymbol">
+        <scalar dataType="xsd:string">         </scalar>
+      </parameter>
+    </parameterList>
+    <parameterList dictRef="gulp:speciesparameters" title="Parameters for atom 3">
+      <parameter title="name" dictRef="gulp:specieslabel">
+        <scalar dataType="xsd:string">O    </scalar>
+      </parameter>
+      <parameter title="type" dictRef="gulp:speciestype">
+        <scalar dataType="xsd:string">Shell </scalar>
+      </parameter>
+      <parameter title="atomic number" dictRef="gulp:speciesatomicnumber">
+        <scalar dataType="xsd:integer" units="units:dimensionless">8</scalar>
+      </parameter>
+      <parameter title="atomic mass" dictRef="gulp:speciesatomicmass">
+        <scalar dataType="fpx:real" units="gulp-units:amu">0.000000000000e0</scalar>
+      </parameter>
+      <parameter title="charge" dictRef="gulp:speciescharge">
+        <scalar dataType="fpx:real" units="gulp-units:e">-2.869020000000e0</scalar>
+      </parameter>
+      <parameter title="covalent radii" dictRef="gulp:speciescovalentradii">
+        <scalar dataType="fpx:real" units="gulp-units:Ang">7.300000190735e-1</scalar>
+      </parameter>
+      <parameter title="ionic radii" dictRef="gulp:speciesionicradii">
+        <scalar dataType="fpx:real" units="gulp-units:Ang">0.000000000000e0</scalar>
+      </parameter>
+      <parameter title="Van der Waals radii" dictRef="gulp:speciesvanderwaslsradii">
+        <scalar dataType="fpx:real" units="gulp-units:Ang">1.360000014305e0</scalar>
+      </parameter>
+      <parameter title="bbar: coherent bound neutron scattering length" dictRef="gulp:speciesbbar">
+        <scalar dataType="fpx:real" units="gulp-units:Ang">5.802999734879e-5</scalar>
+      </parameter>
+      <parameter title="sigma_coh: coherent neutron scattering cross-section" dictRef="gulp:speciessigcoh">
+        <scalar dataType="fpx:real" units="gulp-units:Ang2">4.231700915950e-8</scalar>
+      </parameter>
+      <parameter title="sigma_inc: incoherent bound neutron scattering cross-section" dictRef="gulp:speciessiginc">
+        <scalar dataType="fpx:real" units="gulp-units:Ang2">2.986970066559e-12</scalar>
+      </parameter>
+      <parameter title="library symbol" dictRef="gulp:specieslibrarysymbol">
+        <scalar dataType="xsd:string">         </scalar>
+      </parameter>
+    </parameterList>
+  </parameterList>
+  <!--In subroutine gulp_cml_startmodule-->
+  <module title="Gulp configuration">
+    <!--In subroutine gulp_cml_startmodule-->
+    <module title="Initialisation" dictRef="eminerals:init">
+      <!--In subroutine gulp_cml_structure-->
+      <parameterList dictRef="gulp:configinfo" title="Configuration information">
+        <parameter name="Configuration name">
+          <scalar dataType="xsd:string">No name</scalar>
+        </parameter>
+        <parameter name="Configuration number">
+          <scalar dataType="xsd:integer" units="units:countable">1</scalar>
+        </parameter>
+        <parameter name="Total number of configurations">
+          <scalar dataType="xsd:integer" units="units:countable">1</scalar>
+        </parameter>
+        <parameter dictRef="gulp:formula" name="Chemical formula of config">
+          <scalar dataType="xsd:string" units="units:dimensionless">O4Mg4</scalar>
+        </parameter>
+        <parameter name="Number of irreducible atoms and Shells">
+          <scalar dataType="xsd:integer" units="units:countable">12</scalar>
+        </parameter>
+        <parameter name="Total number of atoms and shells">
+          <scalar dataType="xsd:integer" units="units:countable">12</scalar>
+        </parameter>
+        <parameter name="Dimensionality">
+          <scalar dataType="xsd:integer" units="units:countable">3</scalar>
+        </parameter>
+        <parameter name="Charge">
+          <scalar dataType="fpx:real" units="gulp-units:electronicCharge">8.881784197001e-16</scalar>
+        </parameter>
+        <parameter dictRef="gulp:supercell" name="Supercell dimensions">
+          <array size="3" dataType="xsd:integer" units="units:countable">1 1 1</array>
+        </parameter>
+        <parameter dictRef="gulp:shrink" name="Shrink factors">
+          <array size="3" dataType="xsd:integer" units="units:countable">1 1 1</array>
+        </parameter>
+        <parameter dictRef="gulp:tempconfig" name="Temperature of configuration">
+          <scalar dataType="fpx:real" units="gulp-units:K">0.000000000000e0</scalar>
+        </parameter>
+        <parameter dictRef="gulp:pressconfig" name="Pressure of configuration">
+          <scalar dataType="fpx:real" units="gulp-units:GPa">0.000000000000e0</scalar>
+        </parameter>
+      </parameterList>
+      <lattice title="Cell" dictRef="gulp:cell" spaceType="real">
+        <latticeVector units="units:angstrom" dictRef="cml:latticeVector">4.212000000000e0 0.000000000000e0 0.000000000000e0</latticeVector>
+        <latticeVector units="units:angstrom" dictRef="cml:latticeVector">0.000000000000e0 4.212000000000e0 0.000000000000e0</latticeVector>
+        <latticeVector units="units:angstrom" dictRef="cml:latticeVector">0.000000000000e0 0.000000000000e0 4.212000000000e0</latticeVector>
+      </lattice>
+      <lattice title="Cell" dictRef="gulp:cell" spaceType="real">
+        <latticeVector units="units:angstrom" dictRef="cml:latticeVector">4.212000000000e0 0.000000000000e0 0.000000000000e0</latticeVector>
+        <latticeVector units="units:angstrom" dictRef="cml:latticeVector">0.000000000000e0 4.212000000000e0 0.000000000000e0</latticeVector>
+        <latticeVector units="units:angstrom" dictRef="cml:latticeVector">0.000000000000e0 0.000000000000e0 4.212000000000e0</latticeVector>
+      </lattice>
+      <propertyList dictRef="gulp:cellVolume" title="Cell Volume">
+        <property dictRef="gulp:3Dcellvolume" title="3D Cell Volume">
+          <scalar dataType="fpx:real" units="gulp-units:Ang3">7.472485612800e1</scalar>
+        </property>
+      </propertyList>
+      <molecule>
+        <atomArray>
+          <atom elementType="O" xFract="5.000000000000e-1" yFract="5.000000000000e-1" zFract="5.000000000000e-1" occupancy="1.000000000000e0" id="1">
+            <scalar title="Charge" units="gulp-units:electronicunits" dataType="fpx:real">8.690200000000e-1</scalar>
+            <scalar title="Type" dataType="sxd:string">core</scalar>
+            <particle elementType="O" xFract="5.000000000000e-1" yFract="5.000000000000e-1" zFract="5.000000000000e-1" occupancy="1.000000000000e0">
+              <scalar title="Charge" units="gulp-units:electronicunits" dataType="fpx:real">-2.869020000000e0</scalar>
+              <scalar title="Type" dataType="sxd:string">shell</scalar>
+            </particle>
+          </atom>
+          <atom elementType="O" xFract="5.000000000000e-1" yFract="0.000000000000e0" zFract="0.000000000000e0" occupancy="1.000000000000e0" id="2">
+            <scalar title="Charge" units="gulp-units:electronicunits" dataType="fpx:real">8.690200000000e-1</scalar>
+            <scalar title="Type" dataType="sxd:string">core</scalar>
+            <particle elementType="O" xFract="5.000000000000e-1" yFract="0.000000000000e0" zFract="0.000000000000e0" occupancy="1.000000000000e0">
+              <scalar title="Charge" units="gulp-units:electronicunits" dataType="fpx:real">-2.869020000000e0</scalar>
+              <scalar title="Type" dataType="sxd:string">shell</scalar>
+            </particle>
+          </atom>
+          <atom elementType="O" xFract="0.000000000000e0" yFract="5.000000000000e-1" zFract="0.000000000000e0" occupancy="1.000000000000e0" id="3">
+            <scalar title="Charge" units="gulp-units:electronicunits" dataType="fpx:real">8.690200000000e-1</scalar>
+            <scalar title="Type" dataType="sxd:string">core</scalar>
+            <particle elementType="O" xFract="0.000000000000e0" yFract="5.000000000000e-1" zFract="0.000000000000e0" occupancy="1.000000000000e0">
+              <scalar title="Charge" units="gulp-units:electronicunits" dataType="fpx:real">-2.869020000000e0</scalar>
+              <scalar title="Type" dataType="sxd:string">shell</scalar>
+            </particle>
+          </atom>
+          <atom elementType="O" xFract="0.000000000000e0" yFract="0.000000000000e0" zFract="5.000000000000e-1" occupancy="1.000000000000e0" id="4">
+            <scalar title="Charge" units="gulp-units:electronicunits" dataType="fpx:real">8.690200000000e-1</scalar>
+            <scalar title="Type" dataType="sxd:string">core</scalar>
+            <particle elementType="O" xFract="0.000000000000e0" yFract="0.000000000000e0" zFract="5.000000000000e-1" occupancy="1.000000000000e0">
+              <scalar title="Charge" units="gulp-units:electronicunits" dataType="fpx:real">-2.869020000000e0</scalar>
+              <scalar title="Type" dataType="sxd:string">shell</scalar>
+            </particle>
+          </atom>
+          <atom elementType="Mg" xFract="0.000000000000e0" yFract="0.000000000000e0" zFract="0.000000000000e0" occupancy="1.000000000000e0" id="5">
+            <scalar title="Charge" units="gulp-units:electronicunits" dataType="fpx:real">2.000000000000e0</scalar>
+            <scalar title="Type" dataType="sxd:string">core</scalar>
+          </atom>
+          <atom elementType="Mg" xFract="0.000000000000e0" yFract="5.000000000000e-1" zFract="5.000000000000e-1" occupancy="1.000000000000e0" id="6">
+            <scalar title="Charge" units="gulp-units:electronicunits" dataType="fpx:real">2.000000000000e0</scalar>
+            <scalar title="Type" dataType="sxd:string">core</scalar>
+          </atom>
+          <atom elementType="Mg" xFract="5.000000000000e-1" yFract="0.000000000000e0" zFract="5.000000000000e-1" occupancy="1.000000000000e0" id="7">
+            <scalar title="Charge" units="gulp-units:electronicunits" dataType="fpx:real">2.000000000000e0</scalar>
+            <scalar title="Type" dataType="sxd:string">core</scalar>
+          </atom>
+          <atom elementType="Mg" xFract="5.000000000000e-1" yFract="5.000000000000e-1" zFract="0.000000000000e0" occupancy="1.000000000000e0" id="8">
+            <scalar title="Charge" units="gulp-units:electronicunits" dataType="fpx:real">2.000000000000e0</scalar>
+            <scalar title="Type" dataType="sxd:string">core</scalar>
+          </atom>
+        </atomArray>
+      </molecule>
+      <parameterList dictRef="gulp:symmetrydata" title="Symmetry">
+        <parameter dictRef="gulp:symmethod" name="symmetry method">
+          <scalar dataType="xsd:string">no symmetry applied to calculation</scalar>
+        </parameter>
+      </parameterList>
+      <!--In subroutine gulp_cml_endmodule-->
+    </module>
+    <!--In subroutine gulp_cml_outener-->
+    <module title="Components of the energy" dictRef="gulp:outputEner">
+      <parameterList dictRef="gulp:CMMmethod" title="CMM method">
+        <parameter name="CMMorder">
+          <scalar dataType="xsd:string">No CMM</scalar>
+        </parameter>
+      </parameterList>
+      <propertyList dictRef="gulp:componetsofEnergy" title="Components">
+        <property dictRef="gulp:interatompot" title="Interatomic potentials">
+          <scalar dataType="fpx:real" units="gulp-units:eV">2.818454412705e1</scalar>
+        </property>
+        <property dictRef="gulp:threebodypot" title="Three-body potentials">
+          <scalar dataType="fpx:real" units="gulp-units:eV">0.000000000000e0</scalar>
+        </property>
+        <property dictRef="gulp:fourbodypot" title="Four-body potentials">
+          <scalar dataType="fpx:real" units="gulp-units:eV">0.000000000000e0</scalar>
+        </property>
+        <property dictRef="gulp:ooppot" title="Out of plane potentials">
+          <scalar dataType="fpx:real" units="gulp-units:eV">0.000000000000e0</scalar>
+        </property>
+        <property dictRef="gulp:sixbodypot" title="Six-body potentials">
+          <scalar dataType="fpx:real" units="gulp-units:eV">0.000000000000e0</scalar>
+        </property>
+        <property dictRef="gulp:manybodypot" title="Many-body potentials">
+          <scalar dataType="fpx:real" units="gulp-units:eV">0.000000000000e0</scalar>
+        </property>
+        <property dictRef="gulp:brennerbodypot" title="Brenner potentials">
+          <scalar dataType="fpx:real" units="gulp-units:eV">0.000000000000e0</scalar>
+        </property>
+        <property dictRef="gulp:bondorderpot" title="Bond-order potentials">
+          <scalar dataType="fpx:real" units="gulp-units:eV">0.000000000000e0</scalar>
+        </property>
+        <property dictRef="gulp:bondorderself" title="Bond-order self energy">
+          <scalar dataType="fpx:real" units="gulp-units:eV">0.000000000000e0</scalar>
+        </property>
+        <property dictRef="gulp:chargecoupledpot" title="Charge-coupled potentials">
+          <scalar dataType="fpx:real" units="gulp-units:eV">0.000000000000e0</scalar>
+        </property>
+        <property dictRef="gulp:ereal" title="Monopole - monopole (real)">
+          <scalar dataType="fpx:real" units="gulp-units:eV">-5.734563078719e1</scalar>
+        </property>
+        <property dictRef="gulp:ecmm" title="Monopole - multipole">
+          <scalar dataType="fpx:real" units="gulp-units:eV">0.000000000000e0</scalar>
+        </property>
+        <property dictRef="gulp:erecip" title="Monopole - monopole (recip)">
+          <scalar dataType="fpx:real" units="gulp-units:eV">-1.338377154057e2</scalar>
+        </property>
+        <property dictRef="gulp:total" title="Monopole - monopole (total)">
+          <scalar dataType="fpx:real" units="gulp-units:eV">-1.911833461929e2</scalar>
+        </property>
+        <property dictRef="gulp:ec6" title="Dispersion (real+recip)">
+          <scalar dataType="fpx:real" units="gulp-units:eV">0.000000000000e0</scalar>
+        </property>
+        <property dictRef="gulp:epolar" title="Polarisation energy">
+          <scalar dataType="fpx:real" units="gulp-units:eV">0.000000000000e0</scalar>
+        </property>
+        <property dictRef="gulp:eeinstin" title="Einestein energy">
+          <scalar dataType="fpx:real" units="gulp-units:eV">0.000000000000e0</scalar>
+        </property>
+        <property dictRef="gulp:sft" title="Energy shift">
+          <scalar dataType="fpx:real" units="gulp-units:eV">0.000000000000e0</scalar>
+        </property>
+        <property dictRef="gulp:edipole" title="Dipole correction energy">
+          <scalar dataType="fpx:real" units="gulp-units:eV">0.000000000000e0</scalar>
+        </property>
+        <property dictRef="gulp:echargebgd" title="Neutralising energy">
+          <scalar dataType="fpx:real" units="gulp-units:eV">0.000000000000e0</scalar>
+        </property>
+        <property dictRef="gulp:ewolfself" title="Wolf sum self energy">
+          <scalar dataType="fpx:real" units="gulp-units:eV">0.000000000000e0</scalar>
+        </property>
+        <property dictRef="gulp:eself" title="Self energy (EEM/QEq/SM)">
+          <scalar dataType="fpx:real" units="gulp-units:eV">0.000000000000e0</scalar>
+        </property>
+        <property dictRef="gulp:eqeqQEq" title="QEq Coulomb correction">
+          <scalar dataType="fpx:real" units="gulp-units:eV">0.000000000000e0</scalar>
+        </property>
+        <property dictRef="gulp:esregion12" title="Region 1-2 interaction energy">
+          <scalar dataType="fpx:real" units="gulp-units:eV">0.000000000000e0</scalar>
+        </property>
+        <property dictRef="gulp:esregion2" title="Region 2-2 interaction energy">
+          <scalar dataType="fpx:real" units="gulp-units:eV">0.000000000000e0</scalar>
+        </property>
+        <property dictRef="gulp:epv" title="Pressure*volume">
+          <scalar dataType="fpx:real" units="gulp-units:eV">0.000000000000e0</scalar>
+        </property>
+        <property dictRef="gulp:eforce" title="External_force*distance">
+          <scalar dataType="fpx:real" units="gulp-units:eV">0.000000000000e0</scalar>
+        </property>
+        <property dictRef="gulp:evib" title="Vibrational contribution">
+          <scalar dataType="fpx:real" units="gulp-units:eV">0.000000000000e0</scalar>
+        </property>
+      </propertyList>
+      <propertyList dictRef="gulp:totalEnergy" title="Energy Totals">
+        <property dictRef="gulp:eEnergy" title="Total energy">
+          <scalar dataType="fpx:real" units="gulp-units:eV">-1.629988020659e2</scalar>
+        </property>
+      </propertyList>
+    </module>
+    <!--In subroutine gulp_cml_print_born_charges-->
+    <propertyList dictRef="gulp:born_effective_charge" title="Born Effective Charges">
+      <property title="Born Effective Charge of atom O" ref="1">
+        <matrix rows="3" columns="3" dataType="fpx:real" units="gulp-units:electron">-2.007084730505e0 -2.624267034228e-18 2.877198109067e-19 -2.657103441606e-18 -2.007084730505e0 5.860233481819e-19 1.859626766955e-19 4.842612128885e-19 -2.007084730505e0</matrix>
+      </property>
+      <property title="Born Effective Charge of atom O" ref="2">
+        <matrix rows="3" columns="3" dataType="fpx:real" units="gulp-units:electron">-2.007084730505e0 -1.503380660887e-18 -7.789925021625e-20 -1.548446226005e-18 -2.007084730505e0 -9.577292530408e-19 -1.905140826239e-19 -8.559671177475e-19 -2.007084730505e0</matrix>
+      </property>
+      <property title="Born Effective Charge of atom O" ref="3">
+        <matrix rows="3" columns="3" dataType="fpx:real" units="gulp-units:electron">-2.007084730505e0 -1.247497515120e-18 -1.255941093032e-18 -1.202431950002e-18 -2.007084730505e0 2.204104988381e-19 -1.154183958821e-18 1.077906653483e-19 -2.007084730505e0</matrix>
+      </property>
+      <property title="Born Effective Charge of atom O" ref="4">
+        <matrix rows="3" columns="3" dataType="fpx:real" units="gulp-units:electron">-2.007084730505e0 -2.418894202948e-18 -1.544453230754e-18 -2.386057795570e-18 -2.007084730505e0 -1.246235178983e-18 -1.431838398346e-18 -1.133615345493e-18 -2.007084730505e0</matrix>
+      </property>
+      <property title="Born Effective Charge of atom Mg" ref="5">
+        <matrix rows="3" columns="3" dataType="fpx:real" units="gulp-units:electron">2.007084730505e0 2.017536849915e-18 2.587893946943e-19 1.958153544341e-18 2.007084730505e0 -3.946656584138e-20 7.476576124259e-20 -2.234992435464e-19 2.007084730505e0</matrix>
+      </property>
+      <property title="Born Effective Charge of atom Mg" ref="6">
+        <matrix rows="3" columns="3" dataType="fpx:real" units="gulp-units:electron">2.007084730505e0 9.827429751691e-19 6.799022824319e-19 9.012437358199e-19 2.007084730505e0 3.816414879090e-19 4.762429439408e-19 5.656741656140e-19 2.007084730505e0</matrix>
+      </property>
+      <property title="Born Effective Charge of atom Mg" ref="7">
+        <matrix rows="3" columns="3" dataType="fpx:real" units="gulp-units:electron">2.007084730505e0 1.799067073583e-18 6.799022824319e-19 1.880566312932e-18 2.007084730505e0 3.816414879090e-19 8.639259158836e-19 1.779731051645e-19 2.007084730505e0</matrix>
+      </property>
+      <property title="Born Effective Charge of atom Mg" ref="8">
+        <matrix rows="3" columns="3" dataType="fpx:real" units="gulp-units:electron">2.007084730505e0 2.994692514516e-18 9.719798035378e-19 3.054075820091e-18 2.007084730505e0 6.737141750275e-19 1.175639142029e-18 8.773825577720e-19 2.007084730505e0</matrix>
+      </property>
+    </propertyList>
+    <!--In subroutine gulp_cml_output_derivs-->
+    <propertyList>
+      <property title="Elastic Constant Matrix">
+        <matrix rows="6" columns="6" dataType="fpx:real" units="gulp-units:GPa">4.015289289973e2 1.927222210416e2 1.927222210416e2 -1.078061622014e-17 -1.146522893751e-15 6.553960850887e-15 1.927222210416e2 4.015289289973e2 1.927222210416e2 -1.197200507466e-15 -3.922865740482e-17 2.734077600660e-15 1.927222210416e2 1.927222210416e2 4.015289289973e2 -1.386892859716e-15 -1.388287656424e-15 9.806583185909e-16 -1.078061622014e-17 -1.197200507466e-15 -1.386892859716e-15 1.831293964578e2 1.473101466647e-15 -1.475578683716e-16 -1.146522893751e-15 -3.922865740482e-17 -1.388287656424e-15 1.473101466647e-15 1.831293964578e2 -1.203012160414e-16 6.553960850887e-15 2.734077600660e-15 9.806583185909e-16 -1.475578683716e-16 -1.203012160414e-16 1.831293964578e2</matrix>
+      </property>
+      <property title="Elastic Commpliance Matrix">
+        <matrix rows="6" columns="6" dataType="fpx:real" units="gulp-units:GPa-1">3.616309124768e-3 -1.172809049595e-3 -1.172809049595e-3 -1.633632886412e-20 1.349852726509e-20 -1.056328088207e-19 -1.172809049595e-3 3.616309124768e-3 -1.172809049595e-3 1.469039417156e-20 -1.545893698821e-20 -5.736928358802e-21 -1.172809049595e-3 -1.172809049595e-3 3.616309124768e-3 1.965114383423e-20 1.982105134495e-20 4.011770947356e-20 -1.633632886412e-20 1.469039417156e-20 1.965114383423e-20 5.460619754897e-3 -4.392548179226e-20 4.399934836272e-21 1.349852726509e-20 -1.545893698821e-20 1.982105134495e-20 -4.392548179226e-20 5.460619754897e-3 3.587185943712e-21 -1.056328088207e-19 -5.736928358802e-21 4.011770947356e-20 4.399934836272e-21 3.587185943712e-21 5.460619754897e-3</matrix>
+      </property>
+      <property dictRef="gulp:bulkmodreuss" title="Bulk modulus (Reuss)">
+        <scalar dataType="fpx:real" units="gulp-units:GPa">2.623244570268e2</scalar>
+      </property>
+      <property dictRef="gulp:bulkmodvoigt" title="Bulk modulus (Voigt)">
+        <scalar dataType="fpx:real" units="gulp-units:GPa">2.623244570268e2</scalar>
+      </property>
+      <property dictRef="gulp:bulkmodhill" title="Bulk modulus (Hill)">
+        <scalar dataType="fpx:real" units="gulp-units:GPa">2.623244570268e2</scalar>
+      </property>
+      <property dictRef="gulp:shearmodreuss" title="Shear modulus (Reuss)">
+        <scalar dataType="fpx:real" units="gulp-units:GPa">1.406931536721e2</scalar>
+      </property>
+      <property dictRef="gulp:shearmodvoigt" title="Shear modulus (Voigt)">
+        <scalar dataType="fpx:real" units="gulp-units:GPa">1.516389794659e2</scalar>
+      </property>
+      <property dictRef="gulp:shearmodhill" title="Shear modulus (Hill)">
+        <scalar dataType="fpx:real" units="gulp-units:GPa">1.461660665690e2</scalar>
+      </property>
+      <property dictRef="gulp:velswavereuss" title="Velocity S-wave (Reuss)">
+        <scalar dataType="fpx:real" units="gulp-units:km.s-1">1.981548161985e1</scalar>
+      </property>
+      <property dictRef="gulp:velswavevoigt" title="Velocity S-wave (Voigt)">
+        <scalar dataType="fpx:real" units="gulp-units:km.s-1">2.057186078221e1</scalar>
+      </property>
+      <property dictRef="gulp:velpwavehill" title="Velocity S-wave (Hill)">
+        <scalar dataType="fpx:real" units="gulp-units:km.s-1">2.019721228127e1</scalar>
+      </property>
+      <property dictRef="gulp:velpwavereuss" title="Velocity P-wave (Reuss)">
+        <scalar dataType="fpx:real" units="gulp-units:km.s-1">3.543509039999e1</scalar>
+      </property>
+      <property dictRef="gulp:velpwavevoigt" title="Velocity P-wave (Voigt)">
+        <scalar dataType="fpx:real" units="gulp-units:km.s-1">3.600522865655e1</scalar>
+      </property>
+      <property dictRef="gulp:velpwavehill" title="Velocity P-wave (Hill)">
+        <scalar dataType="fpx:real" units="gulp-units:km.s-1">3.572129702479e1</scalar>
+      </property>
+    </propertyList>
+    <!--In subroutine gulp_cml_output_dielectric-->
+    <propertyList>
+      <property dictRef="gulp:sdct" title="Relative static permittivity tensor">
+        <matrix rows="3" columns="3" dataType="fpx:real" units="units:dimensionless">9.359413190345e0 8.689683474775e-17 1.980065956005e-17 8.689683474775e-17 9.359413190345e0 1.993918587893e-17 1.980065956005e-17 1.993918587893e-17 9.359413190345e0</matrix>
+      </property>
+      <property dictRef="gulp:srind" title="Static refractive indices">
+        <array size="3" dataType="fpx:real" units="gulp-units:10-11CN-1">3.059315804284e0 3.059315804284e0 3.059315804284e0</array>
+      </property>
+      <property dictRef="gulp:hfct" title="Relative permittivity tensor at high frequency">
+        <matrix rows="3" columns="3" dataType="fpx:real" units="units:dimensionless">2.195274531484e0 8.714341769280e-19 2.036048217371e-19 8.714341769280e-19 2.195274531484e0 2.346889335583e-19 2.036048217371e-19 2.346889335583e-19 2.195274531484e0</matrix>
+      </property>
+      <property dictRef="gulp:hrind" title="High frequency refractive indices">
+        <array size="3" dataType="fpx:real" units="gulp-units:10-11CN-1">1.481645885994e0 1.481645885994e0 1.481645885994e0</array>
+      </property>
+      <property dictRef="gulp:piezo" title="Piezoelectric Strain Matrix">
+        <matrix rows="6" columns="3" dataType="fpx:real" units="gulp-units:Cm.2">1.679004320924e-14 2.562243160064e-15 1.532676710562e-15 1.111354501030e-16 3.915927853719e-16 -8.270646884054e-16 -5.434954919373e-16 6.356414263863e-15 -3.550942598189e-16 3.915935872645e-16 1.111354501030e-16 3.220893238233e-15 1.284119331903e-16 1.284127350828e-16 5.013235695554e-15 -6.386666638571e-16 2.192288525885e-15 1.111354501030e-16</matrix>
+      </property>
+      <property dictRef="gulp:piezs" title="Piezoelectric Stress Matrix">
+        <matrix rows="6" columns="3" dataType="fpx:real" units="gulp-units:10-11CN-1">5.591542738118e-17 -1.222318841553e-17 -1.715390381056e-17 6.068684343020e-19 2.138339299677e-18 -4.516285776084e-18 -9.003850117024e-18 2.404063309595e-17 -8.101574352213e-18 2.138343678507e-18 6.068684343020e-19 1.758807324511e-17 -5.565794563564e-18 -5.565790723206e-18 1.782820369534e-17 -3.487515801452e-18 1.197125403288e-17 6.068684343020e-19</matrix>
+      </property>
+    </propertyList>
+    <!--In subroutine gulp_cml_startmodule-->
+    <module title="Finalization">
+      <!--In subroutine gulp_cml_structure-->
+      <parameterList dictRef="gulp:configinfo" title="Configuration information">
+        <parameter name="Configuration name">
+          <scalar dataType="xsd:string">No name</scalar>
+        </parameter>
+        <parameter name="Configuration number">
+          <scalar dataType="xsd:integer" units="units:countable">1</scalar>
+        </parameter>
+        <parameter name="Total number of configurations">
+          <scalar dataType="xsd:integer" units="units:countable">1</scalar>
+        </parameter>
+        <parameter dictRef="gulp:formula" name="Chemical formula of config">
+          <scalar dataType="xsd:string" units="units:dimensionless">O4Mg4</scalar>
+        </parameter>
+        <parameter name="Number of irreducible atoms and Shells">
+          <scalar dataType="xsd:integer" units="units:countable">12</scalar>
+        </parameter>
+        <parameter name="Total number of atoms and shells">
+          <scalar dataType="xsd:integer" units="units:countable">12</scalar>
+        </parameter>
+        <parameter name="Dimensionality">
+          <scalar dataType="xsd:integer" units="units:countable">3</scalar>
+        </parameter>
+        <parameter name="Charge">
+          <scalar dataType="fpx:real" units="gulp-units:electronicCharge">8.881784197001e-16</scalar>
+        </parameter>
+        <parameter dictRef="gulp:supercell" name="Supercell dimensions">
+          <array size="3" dataType="xsd:integer" units="units:countable">1 1 1</array>
+        </parameter>
+        <parameter dictRef="gulp:shrink" name="Shrink factors">
+          <array size="3" dataType="xsd:integer" units="units:countable">1 1 1</array>
+        </parameter>
+        <parameter dictRef="gulp:tempconfig" name="Temperature of configuration">
+          <scalar dataType="fpx:real" units="gulp-units:K">0.000000000000e0</scalar>
+        </parameter>
+        <parameter dictRef="gulp:pressconfig" name="Pressure of configuration">
+          <scalar dataType="fpx:real" units="gulp-units:GPa">0.000000000000e0</scalar>
+        </parameter>
+      </parameterList>
+      <lattice title="Cell" dictRef="gulp:cell" spaceType="real">
+        <latticeVector units="units:angstrom" dictRef="cml:latticeVector">4.212000000000e0 0.000000000000e0 0.000000000000e0</latticeVector>
+        <latticeVector units="units:angstrom" dictRef="cml:latticeVector">0.000000000000e0 4.212000000000e0 0.000000000000e0</latticeVector>
+        <latticeVector units="units:angstrom" dictRef="cml:latticeVector">0.000000000000e0 0.000000000000e0 4.212000000000e0</latticeVector>
+      </lattice>
+      <lattice title="Cell" dictRef="gulp:cell" spaceType="real">
+        <latticeVector units="units:angstrom" dictRef="cml:latticeVector">4.212000000000e0 0.000000000000e0 0.000000000000e0</latticeVector>
+        <latticeVector units="units:angstrom" dictRef="cml:latticeVector">0.000000000000e0 4.212000000000e0 0.000000000000e0</latticeVector>
+        <latticeVector units="units:angstrom" dictRef="cml:latticeVector">0.000000000000e0 0.000000000000e0 4.212000000000e0</latticeVector>
+      </lattice>
+      <propertyList dictRef="gulp:cellVolume" title="Cell Volume">
+        <property dictRef="gulp:3Dcellvolume" title="3D Cell Volume">
+          <scalar dataType="fpx:real" units="gulp-units:Ang3">7.472485612800e1</scalar>
+        </property>
+      </propertyList>
+      <molecule>
+        <atomArray>
+          <atom elementType="O" xFract="5.000000000000e-1" yFract="5.000000000000e-1" zFract="5.000000000000e-1" occupancy="1.000000000000e0" id="1">
+            <scalar title="Charge" units="gulp-units:electronicunits" dataType="fpx:real">8.690200000000e-1</scalar>
+            <scalar title="Type" dataType="sxd:string">core</scalar>
+            <particle elementType="O" xFract="5.000000000000e-1" yFract="5.000000000000e-1" zFract="5.000000000000e-1" occupancy="1.000000000000e0">
+              <scalar title="Charge" units="gulp-units:electronicunits" dataType="fpx:real">-2.869020000000e0</scalar>
+              <scalar title="Type" dataType="sxd:string">shell</scalar>
+            </particle>
+          </atom>
+          <atom elementType="O" xFract="5.000000000000e-1" yFract="0.000000000000e0" zFract="0.000000000000e0" occupancy="1.000000000000e0" id="2">
+            <scalar title="Charge" units="gulp-units:electronicunits" dataType="fpx:real">8.690200000000e-1</scalar>
+            <scalar title="Type" dataType="sxd:string">core</scalar>
+            <particle elementType="O" xFract="5.000000000000e-1" yFract="0.000000000000e0" zFract="0.000000000000e0" occupancy="1.000000000000e0">
+              <scalar title="Charge" units="gulp-units:electronicunits" dataType="fpx:real">-2.869020000000e0</scalar>
+              <scalar title="Type" dataType="sxd:string">shell</scalar>
+            </particle>
+          </atom>
+          <atom elementType="O" xFract="0.000000000000e0" yFract="5.000000000000e-1" zFract="0.000000000000e0" occupancy="1.000000000000e0" id="3">
+            <scalar title="Charge" units="gulp-units:electronicunits" dataType="fpx:real">8.690200000000e-1</scalar>
+            <scalar title="Type" dataType="sxd:string">core</scalar>
+            <particle elementType="O" xFract="0.000000000000e0" yFract="5.000000000000e-1" zFract="0.000000000000e0" occupancy="1.000000000000e0">
+              <scalar title="Charge" units="gulp-units:electronicunits" dataType="fpx:real">-2.869020000000e0</scalar>
+              <scalar title="Type" dataType="sxd:string">shell</scalar>
+            </particle>
+          </atom>
+          <atom elementType="O" xFract="0.000000000000e0" yFract="0.000000000000e0" zFract="5.000000000000e-1" occupancy="1.000000000000e0" id="4">
+            <scalar title="Charge" units="gulp-units:electronicunits" dataType="fpx:real">8.690200000000e-1</scalar>
+            <scalar title="Type" dataType="sxd:string">core</scalar>
+            <particle elementType="O" xFract="0.000000000000e0" yFract="0.000000000000e0" zFract="5.000000000000e-1" occupancy="1.000000000000e0">
+              <scalar title="Charge" units="gulp-units:electronicunits" dataType="fpx:real">-2.869020000000e0</scalar>
+              <scalar title="Type" dataType="sxd:string">shell</scalar>
+            </particle>
+          </atom>
+          <atom elementType="Mg" xFract="0.000000000000e0" yFract="0.000000000000e0" zFract="0.000000000000e0" occupancy="1.000000000000e0" id="5">
+            <scalar title="Charge" units="gulp-units:electronicunits" dataType="fpx:real">2.000000000000e0</scalar>
+            <scalar title="Type" dataType="sxd:string">core</scalar>
+          </atom>
+          <atom elementType="Mg" xFract="0.000000000000e0" yFract="5.000000000000e-1" zFract="5.000000000000e-1" occupancy="1.000000000000e0" id="6">
+            <scalar title="Charge" units="gulp-units:electronicunits" dataType="fpx:real">2.000000000000e0</scalar>
+            <scalar title="Type" dataType="sxd:string">core</scalar>
+          </atom>
+          <atom elementType="Mg" xFract="5.000000000000e-1" yFract="0.000000000000e0" zFract="5.000000000000e-1" occupancy="1.000000000000e0" id="7">
+            <scalar title="Charge" units="gulp-units:electronicunits" dataType="fpx:real">2.000000000000e0</scalar>
+            <scalar title="Type" dataType="sxd:string">core</scalar>
+          </atom>
+          <atom elementType="Mg" xFract="5.000000000000e-1" yFract="5.000000000000e-1" zFract="0.000000000000e0" occupancy="1.000000000000e0" id="8">
+            <scalar title="Charge" units="gulp-units:electronicunits" dataType="fpx:real">2.000000000000e0</scalar>
+            <scalar title="Type" dataType="sxd:string">core</scalar>
+          </atom>
+        </atomArray>
+      </molecule>
+      <parameterList dictRef="gulp:symmetrydata" title="Symmetry">
+        <parameter dictRef="gulp:symmethod" name="symmetry method">
+          <scalar dataType="xsd:string">no symmetry applied to calculation</scalar>
+        </parameter>
+      </parameterList>
+      <!--In subroutine gulp_cml_endmodule-->
+    </module>
+    <!--In subroutine gulp_cml_add_minimise_step-->
+    <module serial="0" role="step">
+      <property title="Cycle">
+        <scalar dataType="xsd:integer" units="units:countable">0</scalar>
+      </property>
+      <property title="Energy">
+        <scalar dataType="fpx:real" units="gulp-units:eV">4.350232870768e1</scalar>
+      </property>
+      <property title="Gnorm">
+        <scalar dataType="fpx:real" units="units:dimensionless">4.888923246530e-1</scalar>
+      </property>
+      <property title="CPU time">
+        <scalar dataType="fpx:real" units="gulp-units:seconds">4.280260000000e-1</scalar>
+      </property>
+    </module>
+    <!--In subroutine gulp_cml_add_minimise_step-->
+    <module serial="1" role="step">
+      <property title="Cycle">
+        <scalar dataType="xsd:integer" units="units:countable">1</scalar>
+      </property>
+      <property title="Energy">
+        <scalar dataType="fpx:real" units="gulp-units:eV">3.657835370540e1</scalar>
+      </property>
+      <property title="Gnorm">
+        <scalar dataType="fpx:real" units="units:dimensionless">2.508824853707e-1</scalar>
+      </property>
+      <property title="CPU time">
+        <scalar dataType="fpx:real" units="gulp-units:seconds">1.788111000000e0</scalar>
+      </property>
+    </module>
+    <!--In subroutine gulp_cml_add_minimise_step-->
+    <module serial="2" role="step">
+      <property title="Cycle">
+        <scalar dataType="xsd:integer" units="units:countable">2</scalar>
+      </property>
+      <property title="Energy">
+        <scalar dataType="fpx:real" units="gulp-units:eV">3.187412425067e1</scalar>
+      </property>
+      <property title="Gnorm">
+        <scalar dataType="fpx:real" units="units:dimensionless">1.744163190102e-1</scalar>
+      </property>
+      <property title="CPU time">
+        <scalar dataType="fpx:real" units="gulp-units:seconds">3.448215000000e0</scalar>
+      </property>
+    </module>
+    <!--In subroutine gulp_cml_add_minimise_step-->
+    <module serial="3" role="step">
+      <property title="Cycle">
+        <scalar dataType="xsd:integer" units="units:countable">3</scalar>
+      </property>
+      <property title="Energy">
+        <scalar dataType="fpx:real" units="gulp-units:eV">2.980047841316e1</scalar>
+      </property>
+      <property title="Gnorm">
+        <scalar dataType="fpx:real" units="units:dimensionless">1.271143006249e-1</scalar>
+      </property>
+      <property title="CPU time">
+        <scalar dataType="fpx:real" units="gulp-units:seconds">3.952246000000e0</scalar>
+      </property>
+    </module>
+    <!--In subroutine gulp_cml_add_minimise_step-->
+    <module serial="4" role="step">
+      <property title="Cycle">
+        <scalar dataType="xsd:integer" units="units:countable">4</scalar>
+      </property>
+      <property title="Energy">
+        <scalar dataType="fpx:real" units="gulp-units:eV">2.850313049220e1</scalar>
+      </property>
+      <property title="Gnorm">
+        <scalar dataType="fpx:real" units="units:dimensionless">9.185903387875e-2</scalar>
+      </property>
+      <property title="CPU time">
+        <scalar dataType="fpx:real" units="gulp-units:seconds">4.452277000000e0</scalar>
+      </property>
+    </module>
+    <!--In subroutine gulp_cml_add_minimise_step-->
+    <module serial="5" role="step">
+      <property title="Cycle">
+        <scalar dataType="xsd:integer" units="units:countable">5</scalar>
+      </property>
+      <property title="Energy">
+        <scalar dataType="fpx:real" units="gulp-units:eV">2.772481276454e1</scalar>
+      </property>
+      <property title="Gnorm">
+        <scalar dataType="fpx:real" units="units:dimensionless">6.587651982976e-2</scalar>
+      </property>
+      <property title="CPU time">
+        <scalar dataType="fpx:real" units="gulp-units:seconds">4.952308000000e0</scalar>
+      </property>
+    </module>
+    <!--In subroutine gulp_cml_add_minimise_step-->
+    <module serial="6" role="step">
+      <property title="Cycle">
+        <scalar dataType="xsd:integer" units="units:countable">6</scalar>
+      </property>
+      <property title="Energy">
+        <scalar dataType="fpx:real" units="gulp-units:eV">2.727687662054e1</scalar>
+      </property>
+      <property title="Gnorm">
+        <scalar dataType="fpx:real" units="units:dimensionless">4.693418359855e-2</scalar>
+      </property>
+      <property title="CPU time">
+        <scalar dataType="fpx:real" units="gulp-units:seconds">5.444339000000e0</scalar>
+      </property>
+    </module>
+    <!--In subroutine gulp_cml_add_minimise_step-->
+    <module serial="7" role="step">
+      <property title="Cycle">
+        <scalar dataType="xsd:integer" units="units:countable">7</scalar>
+      </property>
+      <property title="Energy">
+        <scalar dataType="fpx:real" units="gulp-units:eV">2.703255239137e1</scalar>
+      </property>
+      <property title="Gnorm">
+        <scalar dataType="fpx:real" units="units:dimensionless">3.327221390673e-2</scalar>
+      </property>
+      <property title="CPU time">
+        <scalar dataType="fpx:real" units="gulp-units:seconds">5.952371000000e0</scalar>
+      </property>
+    </module>
+    <!--In subroutine gulp_cml_add_minimise_step-->
+    <module serial="8" role="step">
+      <property title="Cycle">
+        <scalar dataType="xsd:integer" units="units:countable">8</scalar>
+      </property>
+      <property title="Energy">
+        <scalar dataType="fpx:real" units="gulp-units:eV">2.690519289525e1</scalar>
+      </property>
+      <property title="Gnorm">
+        <scalar dataType="fpx:real" units="units:dimensionless">2.350123349805e-2</scalar>
+      </property>
+      <property title="CPU time">
+        <scalar dataType="fpx:real" units="gulp-units:seconds">6.452403000000e0</scalar>
+      </property>
+    </module>
+    <!--In subroutine gulp_cml_add_minimise_step-->
+    <module serial="9" role="step">
+      <property title="Cycle">
+        <scalar dataType="xsd:integer" units="units:countable">9</scalar>
+      </property>
+      <property title="Energy">
+        <scalar dataType="fpx:real" units="gulp-units:eV">2.684505249876e1</scalar>
+      </property>
+      <property title="Gnorm">
+        <scalar dataType="fpx:real" units="units:dimensionless">1.656215130841e-2</scalar>
+      </property>
+      <property title="CPU time">
+        <scalar dataType="fpx:real" units="gulp-units:seconds">6.960434000000e0</scalar>
+      </property>
+    </module>
+    <!--In subroutine gulp_cml_add_minimise_step-->
+    <module serial="10" role="step">
+      <property title="Cycle">
+        <scalar dataType="xsd:integer" units="units:countable">10</scalar>
+      </property>
+      <property title="Energy">
+        <scalar dataType="fpx:real" units="gulp-units:eV">2.681977745596e1</scalar>
+      </property>
+      <property title="Gnorm">
+        <scalar dataType="fpx:real" units="units:dimensionless">1.165420134125e-2</scalar>
+      </property>
+      <property title="CPU time">
+        <scalar dataType="fpx:real" units="gulp-units:seconds">7.460466000000e0</scalar>
+      </property>
+    </module>
+    <!--In subroutine gulp_cml_add_minimise_step-->
+    <module serial="11" role="step">
+      <property title="Cycle">
+        <scalar dataType="xsd:integer" units="units:countable">11</scalar>
+      </property>
+      <property title="Energy">
+        <scalar dataType="fpx:real" units="gulp-units:eV">2.680924818998e1</scalar>
+      </property>
+      <property title="Gnorm">
+        <scalar dataType="fpx:real" units="units:dimensionless">8.191730848113e-3</scalar>
+      </property>
+      <property title="CPU time">
+        <scalar dataType="fpx:real" units="gulp-units:seconds">7.956496000000e0</scalar>
+      </property>
+    </module>
+    <!--In subroutine gulp_cml_add_minimise_step-->
+    <module serial="12" role="step">
+      <property title="Cycle">
+        <scalar dataType="xsd:integer" units="units:countable">12</scalar>
+      </property>
+      <property title="Energy">
+        <scalar dataType="fpx:real" units="gulp-units:eV">2.680646129611e1</scalar>
+      </property>
+      <property title="Gnorm">
+        <scalar dataType="fpx:real" units="units:dimensionless">5.752614632729e-3</scalar>
+      </property>
+      <property title="CPU time">
+        <scalar dataType="fpx:real" units="gulp-units:seconds">8.460528000000e0</scalar>
+      </property>
+    </module>
+    <!--In subroutine gulp_cml_add_minimise_step-->
+    <module serial="13" role="step">
+      <property title="Cycle">
+        <scalar dataType="xsd:integer" units="units:countable">13</scalar>
+      </property>
+      <property title="Energy">
+        <scalar dataType="fpx:real" units="gulp-units:eV">2.680713695116e1</scalar>
+      </property>
+      <property title="Gnorm">
+        <scalar dataType="fpx:real" units="units:dimensionless">4.034501098762e-3</scalar>
+      </property>
+      <property title="CPU time">
+        <scalar dataType="fpx:real" units="gulp-units:seconds">8.952559000000e0</scalar>
+      </property>
+    </module>
+    <!--In subroutine gulp_cml_add_minimise_step-->
+    <module serial="14" role="step">
+      <property title="Cycle">
+        <scalar dataType="xsd:integer" units="units:countable">14</scalar>
+      </property>
+      <property title="Energy">
+        <scalar dataType="fpx:real" units="gulp-units:eV">2.680879893194e1</scalar>
+      </property>
+      <property title="Gnorm">
+        <scalar dataType="fpx:real" units="units:dimensionless">2.829138410060e-3</scalar>
+      </property>
+      <property title="CPU time">
+        <scalar dataType="fpx:real" units="gulp-units:seconds">9.452590000000e0</scalar>
+      </property>
+    </module>
+    <!--In subroutine gulp_cml_add_minimise_step-->
+    <module serial="15" role="step">
+      <property title="Cycle">
+        <scalar dataType="xsd:integer" units="units:countable">15</scalar>
+      </property>
+      <property title="Energy">
+        <scalar dataType="fpx:real" units="gulp-units:eV">2.681063593959e1</scalar>
+      </property>
+      <property title="Gnorm">
+        <scalar dataType="fpx:real" units="units:dimensionless">1.982894657402e-3</scalar>
+      </property>
+      <property title="CPU time">
+        <scalar dataType="fpx:real" units="gulp-units:seconds">9.948621000000e0</scalar>
+      </property>
+    </module>
+    <!--In subroutine gulp_cml_add_minimise_step-->
+    <module serial="16" role="step">
+      <property title="Cycle">
+        <scalar dataType="xsd:integer" units="units:countable">16</scalar>
+      </property>
+      <property title="Energy">
+        <scalar dataType="fpx:real" units="gulp-units:eV">2.681226349555e1</scalar>
+      </property>
+      <property title="Gnorm">
+        <scalar dataType="fpx:real" units="units:dimensionless">1.389261729770e-3</scalar>
+      </property>
+      <property title="CPU time">
+        <scalar dataType="fpx:real" units="gulp-units:seconds">1.043665100000e1</scalar>
+      </property>
+    </module>
+    <!--In subroutine gulp_cml_add_minimise_step-->
+    <module serial="17" role="step">
+      <property title="Cycle">
+        <scalar dataType="xsd:integer" units="units:countable">17</scalar>
+      </property>
+      <property title="Energy">
+        <scalar dataType="fpx:real" units="gulp-units:eV">2.681357396464e1</scalar>
+      </property>
+      <property title="Gnorm">
+        <scalar dataType="fpx:real" units="units:dimensionless">9.730904842052e-4</scalar>
+      </property>
+      <property title="CPU time">
+        <scalar dataType="fpx:real" units="gulp-units:seconds">1.093268200000e1</scalar>
+      </property>
+    </module>
+    <!--In subroutine gulp_cml_add_minimise_step-->
+    <module serial="18" role="step">
+      <property title="Cycle">
+        <scalar dataType="xsd:integer" units="units:countable">18</scalar>
+      </property>
+      <property title="Energy">
+        <scalar dataType="fpx:real" units="gulp-units:eV">2.681457638377e1</scalar>
+      </property>
+      <property title="Gnorm">
+        <scalar dataType="fpx:real" units="units:dimensionless">6.814609927054e-4</scalar>
+      </property>
+      <property title="CPU time">
+        <scalar dataType="fpx:real" units="gulp-units:seconds">1.142871300000e1</scalar>
+      </property>
+    </module>
+    <!--In subroutine gulp_cml_add_minimise_step-->
+    <module serial="19" role="step">
+      <property title="Cycle">
+        <scalar dataType="xsd:integer" units="units:countable">19</scalar>
+      </property>
+      <property title="Energy">
+        <scalar dataType="fpx:real" units="gulp-units:eV">2.681532016254e1</scalar>
+      </property>
+      <property title="Gnorm">
+        <scalar dataType="fpx:real" units="units:dimensionless">4.771684329199e-4</scalar>
+      </property>
+      <property title="CPU time">
+        <scalar dataType="fpx:real" units="gulp-units:seconds">1.192474500000e1</scalar>
+      </property>
+    </module>
+    <!--In subroutine gulp_cml_add_minimise_step-->
+    <module serial="20" role="step">
+      <property title="Cycle">
+        <scalar dataType="xsd:integer" units="units:countable">20</scalar>
+      </property>
+      <property title="Energy">
+        <scalar dataType="fpx:real" units="gulp-units:eV">2.681586155675e1</scalar>
+      </property>
+      <property title="Gnorm">
+        <scalar dataType="fpx:real" units="units:dimensionless">3.340892405840e-4</scalar>
+      </property>
+      <property title="CPU time">
+        <scalar dataType="fpx:real" units="gulp-units:seconds">1.242477600000e1</scalar>
+      </property>
+    </module>
+    <!--In subroutine gulp_cml_add_minimise_step-->
+    <module serial="21" role="step">
+      <property title="Cycle">
+        <scalar dataType="xsd:integer" units="units:countable">21</scalar>
+      </property>
+      <property title="Energy">
+        <scalar dataType="fpx:real" units="gulp-units:eV">2.681625074158e1</scalar>
+      </property>
+      <property title="Gnorm">
+        <scalar dataType="fpx:real" units="units:dimensionless">2.338973896739e-4</scalar>
+      </property>
+      <property title="CPU time">
+        <scalar dataType="fpx:real" units="gulp-units:seconds">1.292480700000e1</scalar>
+      </property>
+    </module>
+    <!--In subroutine gulp_cml_add_minimise_step-->
+    <module serial="22" role="step">
+      <property title="Cycle">
+        <scalar dataType="xsd:integer" units="units:countable">22</scalar>
+      </property>
+      <property title="Energy">
+        <scalar dataType="fpx:real" units="gulp-units:eV">2.681652818722e1</scalar>
+      </property>
+      <property title="Gnorm">
+        <scalar dataType="fpx:real" units="units:dimensionless">1.637452703697e-4</scalar>
+      </property>
+      <property title="CPU time">
+        <scalar dataType="fpx:real" units="gulp-units:seconds">1.342483800000e1</scalar>
+      </property>
+    </module>
+    <!--In subroutine gulp_cml_add_minimise_step-->
+    <module serial="23" role="step">
+      <property title="Cycle">
+        <scalar dataType="xsd:integer" units="units:countable">23</scalar>
+      </property>
+      <property title="Energy">
+        <scalar dataType="fpx:real" units="gulp-units:eV">2.681672484872e1</scalar>
+      </property>
+      <property title="Gnorm">
+        <scalar dataType="fpx:real" units="units:dimensionless">1.146300618274e-4</scalar>
+      </property>
+      <property title="CPU time">
+        <scalar dataType="fpx:real" units="gulp-units:seconds">1.392086900000e1</scalar>
+      </property>
+    </module>
+    <!--In subroutine gulp_cml_add_minimise_step-->
+    <module serial="24" role="step">
+      <property title="Cycle">
+        <scalar dataType="xsd:integer" units="units:countable">24</scalar>
+      </property>
+      <property title="Energy">
+        <scalar dataType="fpx:real" units="gulp-units:eV">2.681686372945e1</scalar>
+      </property>
+      <property title="Gnorm">
+        <scalar dataType="fpx:real" units="units:dimensionless">8.024520110579e-5</scalar>
+      </property>
+      <property title="CPU time">
+        <scalar dataType="fpx:real" units="gulp-units:seconds">1.442090100000e1</scalar>
+      </property>
+    </module>
+    <!--In subroutine gulp_cml_add_minimise_step-->
+    <module serial="25" role="step">
+      <property title="Cycle">
+        <scalar dataType="xsd:integer" units="units:countable">25</scalar>
+      </property>
+      <property title="Energy">
+        <scalar dataType="fpx:real" units="gulp-units:eV">2.681696147214e1</scalar>
+      </property>
+      <property title="Gnorm">
+        <scalar dataType="fpx:real" units="units:dimensionless">5.617371116992e-5</scalar>
+      </property>
+      <property title="CPU time">
+        <scalar dataType="fpx:real" units="gulp-units:seconds">1.492093200000e1</scalar>
+      </property>
+    </module>
+    <!--In subroutine gulp_cml_add_minimise_step-->
+    <module serial="26" role="step">
+      <property title="Cycle">
+        <scalar dataType="xsd:integer" units="units:countable">26</scalar>
+      </property>
+      <property title="Energy">
+        <scalar dataType="fpx:real" units="gulp-units:eV">2.681703024670e1</scalar>
+      </property>
+      <property title="Gnorm">
+        <scalar dataType="fpx:real" units="units:dimensionless">3.932246280196e-5</scalar>
+      </property>
+      <property title="CPU time">
+        <scalar dataType="fpx:real" units="gulp-units:seconds">1.541696300000e1</scalar>
+      </property>
+    </module>
+    <!--In subroutine gulp_cml_add_minimise_step-->
+    <module serial="27" role="step">
+      <property title="Cycle">
+        <scalar dataType="xsd:integer" units="units:countable">27</scalar>
+      </property>
+      <property title="Energy">
+        <scalar dataType="fpx:real" units="gulp-units:eV">2.681707847074e1</scalar>
+      </property>
+      <property title="Gnorm">
+        <scalar dataType="fpx:real" units="units:dimensionless">2.752620602210e-5</scalar>
+      </property>
+      <property title="CPU time">
+        <scalar dataType="fpx:real" units="gulp-units:seconds">1.592099400000e1</scalar>
+      </property>
+    </module>
+    <!--In subroutine gulp_cml_add_minimise_step-->
+    <module serial="28" role="step">
+      <property title="Cycle">
+        <scalar dataType="xsd:integer" units="units:countable">28</scalar>
+      </property>
+      <property title="Energy">
+        <scalar dataType="fpx:real" units="gulp-units:eV">2.681711233056e1</scalar>
+      </property>
+      <property title="Gnorm">
+        <scalar dataType="fpx:real" units="units:dimensionless">1.926858039297e-5</scalar>
+      </property>
+      <property title="CPU time">
+        <scalar dataType="fpx:real" units="gulp-units:seconds">1.641702500000e1</scalar>
+      </property>
+    </module>
+    <!--In subroutine gulp_cml_add_minimise_step-->
+    <module serial="29" role="step">
+      <property title="Cycle">
+        <scalar dataType="xsd:integer" units="units:countable">29</scalar>
+      </property>
+      <property title="Energy">
+        <scalar dataType="fpx:real" units="gulp-units:eV">2.681713606676e1</scalar>
+      </property>
+      <property title="Gnorm">
+        <scalar dataType="fpx:real" units="units:dimensionless">1.348812199654e-5</scalar>
+      </property>
+      <property title="CPU time">
+        <scalar dataType="fpx:real" units="gulp-units:seconds">1.691305600000e1</scalar>
+      </property>
+    </module>
+    <!--In subroutine gulp_cml_add_minimise_step-->
+    <module serial="30" role="step">
+      <property title="Cycle">
+        <scalar dataType="xsd:integer" units="units:countable">30</scalar>
+      </property>
+      <property title="Energy">
+        <scalar dataType="fpx:real" units="gulp-units:eV">2.681715269891e1</scalar>
+      </property>
+      <property title="Gnorm">
+        <scalar dataType="fpx:real" units="units:dimensionless">9.441742092642e-6</scalar>
+      </property>
+      <property title="CPU time">
+        <scalar dataType="fpx:real" units="gulp-units:seconds">1.740908700000e1</scalar>
+      </property>
+    </module>
+    <!--In subroutine gulp_cml_add_minimise_step-->
+    <module serial="31" role="step">
+      <property title="Cycle">
+        <scalar dataType="xsd:integer" units="units:countable">31</scalar>
+      </property>
+      <property title="Energy">
+        <scalar dataType="fpx:real" units="gulp-units:eV">2.681716434966e1</scalar>
+      </property>
+      <property title="Gnorm">
+        <scalar dataType="fpx:real" units="units:dimensionless">6.609247248249e-6</scalar>
+      </property>
+      <property title="CPU time">
+        <scalar dataType="fpx:real" units="gulp-units:seconds">1.790511800000e1</scalar>
+      </property>
+    </module>
+    <!--In subroutine gulp_cml_endmodule-->
+  </module>
+  <!--In subroutine gulp_cml_exit-->
+  <metadata name="eMinerals:EndTime" content="2012-01-16T21:53:03+0000"/>
+  <metadata name="dc:contributor" content="FoX-4.0.1 (http://www.uszla.me.uk/FoX)"/>
+</cml>
